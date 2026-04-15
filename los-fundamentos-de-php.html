@@ -1,0 +1,2003 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Una introducción a PHP5 a través de ejemplos">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/es-php5-juillet-2011/los-fundamentos-de-php.html">
+      
+      
+        <link rel="prev" href="creacion-de-un-entorno-de-desarrollo.html">
+      
+      
+        <link rel="next" href="ejercicio-de-aplicacion---taxes.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>3. Los fundamentos de PHP - Una introducción a PHP5 a través de ejemplos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Una introducción a PHP5 a través de ejemplos";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3-los-fundamentos-de-php" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Una introducción a PHP5 a través de ejemplos" class="md-header__button md-logo" aria-label="Una introducción a PHP5 a través de ejemplos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Una introducción a PHP5 a través de ejemplos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3. Los fundamentos de PHP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar al modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar al modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/es-php5-juillet-2011" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Una introducción a PHP5 a través de ejemplos" class="md-nav__button md-logo" aria-label="Una introducción a PHP5 a través de ejemplos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Una introducción a PHP5 a través de ejemplos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/es-php5-juillet-2011" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bienvenido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="prologo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Prólogo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="creacion-de-un-entorno-de-desarrollo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Creación de un entorno de desarrollo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Los fundamentos de PHP
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="los-fundamentos-de-php.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Los fundamentos de PHP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31-un-primer-ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Un primer ejemplo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. Un primer ejemplo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-el-programa-example_01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1. El programa (example_01)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-ambito-variable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Ámbito variable
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2. Ámbito variable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-programa-1-example_02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1. Programa 1 (example_02)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-programa-2-example_03" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2. Programa 2 (example_03)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Matrices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3. Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-matrices-unidimensionales-clasicas-example_04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1. Matrices unidimensionales clásicas (example_04)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-el-diccionario-example_05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2. El diccionario (example_05)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333-matrices-multidimensionales-example_06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.3. Matrices multidimensionales (example_06)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#334-enlaces-entre-cadenas-y-matrices-example_07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.4. Enlaces entre cadenas y matrices (example_07)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-cuerdas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Cuerdas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4. Cuerdas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-sintaxis-example_08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.1. Sintaxis (example_08)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-comparacion-example_09" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.2. Comparación (example_09)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-expresiones-regulares-example_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. Expresiones regulares (example_10)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-modo-de-paso-de-parametros-de-funcion-example_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6. Modo de paso de parámetros de función (example_11)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-resultados-devueltos-por-una-funcion-example_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7. Resultados devueltos por una función (example_12)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-archivos-de-texto-example_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8. Archivos de texto (example_13)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ejercicio-de-aplicacion---taxes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Ejercicio de aplicación - TAXES
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="objetos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Objetos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ejercicio-de-aplicacion---taxes-con-objetos-impots03.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Ejercicio de aplicación - TAXES con objetos (impots_03)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utilizacion-del-mysql-dbms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Utilización del MySQL DBMS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ejercicio-fiscal-con-mysql.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Ejercicio fiscal con MySQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="php-funciones-de-red.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. PHP Funciones de red
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="php-servidores.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. PHP Servidores
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="impots-ejercicio-con-un-servicio-web-y-una-arquitectura-de-tres-niveles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. IMPOTS Ejercicio con un Servicio Web y una Arquitectura de Tres Niveles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tratamiento-de-documentos-xml-simplexml01.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Tratamiento de documentos XML (simplexml_01)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="impots-ejercicio-con-xml.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. IMPOTS Ejercicio con XML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><a id="refheading398461881943603"></a></p>
+<h1 id="3-los-fundamentos-de-php">3. Los fundamentos de PHP</h1>
+<p><a id="refheading398481881943603"></a></p>
+<h2 id="31-un-primer-ejemplo">3.1. Un primer ejemplo</h2>
+<p>A continuación se muestra un programa que demuestra las características básicas de PHP.</p>
+<p><a id="refheading398501881943603"></a></p>
+<h3 id="311-el-programa-example_01">3.1.1. El programa (example_01)</h3>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // this is a comment</span>
+<span class="odt-code-line">4. // variable used without being declared</span>
+<span class="odt-code-line">5. <span style="color:#0000ff">$name </span><span style="color:#000000">= </span><span style="color:#008000">&quot;dupont&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">6. </span>
+<span class="odt-code-line">7. // a screen display</span>
+<span class="odt-code-line">8. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;</span><span style="color:#0000ff">name=$name</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">9. </span>
+<span class="odt-code-line">10. // an array with elements of different types</span>
+<span class="odt-code-line">11. <span style="color:#0000ff">$array </span><span style="color:#000000">= </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#008000">&quot;one&quot;</span><span style="color:#000000">, </span><span style="color:#008000">&quot;two&quot;</span><span style="color:#000000">,</span><span style="color:#000080"> 3</span><span style="color:#000000">,</span><span style="color:#000080"> 4</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">12. </span>
+<span class="odt-code-line">13. // its number of elements</span>
+<span class="odt-code-line">14. <span style="color:#0000ff">$n </span><span style="color:#000000">= count(</span><span style="color:#0000ff">$array</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">15. </span>
+<span class="odt-code-line">16. // a loop</span>
+<span class="odt-code-line">17. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; </span><span style="color:#0000ff">$n</span><span style="color:#000000">; $i++)</span></span>
+<span class="odt-code-line">18. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;array[</span><span style="color:#0000ff">$i</span><span style="color:#008000">] = </span><span style="color:#0000ff">$array[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">19. </span>
+<span class="odt-code-line">20. // initializing 2 variables with the contents of an array</span>
+<span class="odt-code-line">21. <span style="font-weight:bold"><span style="color:#000000">list</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$string1</span><span style="color:#000000">, </span><span style="color:#0000ff">$string2</span><span style="color:#000000">) = </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#008000">&quot;string1&quot;</span><span style="color:#000000">, </span><span style="color:#008000">&quot;string2&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">22. </span>
+<span class="odt-code-line">23. // concatenation of the 2 strings</span>
+<span class="odt-code-line">24. <span style="color:#0000ff">$string3 </span><span style="color:#000000">= </span><span style="color:#0000ff">$string1 </span><span style="color:#000000">. </span><span style="color:#0000ff">$string2</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">25. </span>
+<span class="odt-code-line">26. // display result</span>
+<span class="odt-code-line">27. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;[</span><span style="color:#0000ff">$string1</span><span style="color:#008000">,</span><span style="color:#0000ff">$string2</span><span style="color:#008000">,</span><span style="color:#0000ff">$string3</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">28. </span>
+<span class="odt-code-line">29. // using the function</span>
+<span class="odt-code-line">30. <span style="color:#000000">display(</span><span style="color:#0000ff">$string1</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">31. </span>
+<span class="odt-code-line">32. // the type of a variable can be determined</span>
+<span class="odt-code-line">33. <span style="color:#000000">displayType(</span><span style="color:#0000ff">$n</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">34. <span style="color:#000000">displayType(</span><span style="color:#0000ff">$string1</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">35. <span style="color:#000000">displayType(</span><span style="color:#0000ff">$array</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">36. </span>
+<span class="odt-code-line">37. // The type of a variable can change during execution</span>
+<span class="odt-code-line">38. <span style="color:#0000ff">$n </span><span style="color:#000000">= </span><span style="color:#008000">&quot;has changed&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">39. <span style="color:#000000">displayType(</span><span style="color:#0000ff">$n</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">40. </span>
+<span class="odt-code-line">41. // a function can return a result</span>
+<span class="odt-code-line">42. <span style="color:#0000ff">$res1 </span><span style="color:#000000">= f1(</span><span style="color:#000080">4</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">43. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;</span><span style="color:#0000ff">res1=$res1</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">44. </span>
+<span class="odt-code-line">45. // a function can return an array of values</span>
+<span class="odt-code-line">46. <span style="font-weight:bold"><span style="color:#000000">list</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$res1</span><span style="color:#000000">, </span><span style="color:#0000ff">$res2</span><span style="color:#000000">, </span><span style="color:#0000ff">$res3</span><span style="color:#000000">) = f2();</span></span>
+<span class="odt-code-line">47. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;(res1,res2,res3)=[</span><span style="color:#0000ff">$res1</span><span style="color:#008000">,</span><span style="color:#0000ff">$res2</span><span style="color:#008000">,</span><span style="color:#0000ff">$res3</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">48. </span>
+<span class="odt-code-line">49. // we could have retrieved these values into an array</span>
+<span class="odt-code-line">50. <span style="color:#0000ff">$t </span><span style="color:#000000">= f2();</span></span>
+<span class="odt-code-line">51. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$t</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">52. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;t[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$t[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">53. </span>
+<span class="odt-code-line">54. // tests</span>
+<span class="odt-code-line">55. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$t</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">56. // displays only strings</span>
+<span class="odt-code-line">57. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">if </span></span><span style="color:#000000">(getType(</span><span style="color:#0000ff">$t</span><span style="color:#000000">[</span><span style="color:#0000ff">$i</span><span style="color:#000000">]) == </span><span style="color:#008000">&quot;string&quot;</span><span style="color:#000000">)</span></span>
+<span class="odt-code-line">58. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;t[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$t[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">59. </span>
+<span class="odt-code-line">60. // other tests</span>
+<span class="odt-code-line">61. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$t</span><span style="color:#000000">); $i++){</span></span>
+<span class="odt-code-line">62. // displays only integers greater than 10</span>
+<span class="odt-code-line">63. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">if </span></span><span style="color:#000000">(getType(</span><span style="color:#0000ff">$t</span><span style="color:#000000">[</span><span style="color:#0000ff">$i</span><span style="color:#000000">]) == </span><span style="color:#008000">&quot;integer&quot; </span><span style="font-weight:bold"><span style="color:#000000">and </span></span><span style="color:#0000ff">$t</span><span style="color:#000000">[</span><span style="color:#0000ff">$i</span><span style="color:#000000">] &gt;</span><span style="color:#000080"> 10</span><span style="color:#000000">)</span></span>
+<span class="odt-code-line">64. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;t[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$t[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">65. }</span>
+<span class="odt-code-line">66. </span>
+<span class="odt-code-line">67. // a while loop</span>
+<span class="odt-code-line">68. <span style="color:#0000ff">$t </span><span style="color:#000000">= </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#000080">8</span><span style="color:#000000">,</span><span style="color:#000080"> 5</span><span style="color:#000000">,</span><span style="color:#000080"> 0</span><span style="color:#000000">, </span><span style="color:#000080">-2</span><span style="color:#000000">,</span><span style="color:#000080"> 3</span><span style="color:#000000">,</span><span style="color:#000080"> 4</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">69. <span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">70. <span style="color:#0000ff">$sum </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">71. <span style="font-weight:bold"><span style="color:#000000">while </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$t</span><span style="color:#000000">) </span><span style="font-weight:bold"><span style="color:#000000">and </span></span><span style="color:#0000ff">$t</span><span style="color:#000000">[</span><span style="color:#0000ff">$i</span><span style="color:#000000">] &gt;</span><span style="color:#000080"> 0</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">72. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;t[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$t[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">73. <span style="color:#008080">  </span><span style="color:#0000ff">$sum+=$t</span><span style="color:#000000">[</span><span style="color:#0000ff">$i</span><span style="color:#000000">];</span><span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080"> //$sum=$sum+$t[$i]</span></span></span>
+<span class="odt-code-line">74. <span style="color:#008080">  </span><span style="color:#000000">$i++;</span><span style="color:#008080">            </span><span style="font-style:italic"><span style="color:#808080"> //$i=$i+1</span></span></span>
+<span class="odt-code-line">75. }</span>
+<span class="odt-code-line">76. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;</span><span style="color:#0000ff">sum=$sum</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">77. </span>
+<span class="odt-code-line">78. // end of program</span>
+<span class="odt-code-line">79. <span style="font-weight:bold"><span style="color:#000000">exit</span></span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">80. </span>
+<span class="odt-code-line">81. //----------------------------------</span>
+<span class="odt-code-line">82. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">display(</span><span style="color:#0000ff">$string</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">83. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// display $string</span></span></span>
+<span class="odt-code-line">84. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;</span><span style="color:#0000ff">string=$string</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">85. }</span>
+<span class="odt-code-line">86. </span>
+<span class="odt-code-line">87. //----------------------------------</span>
+<span class="odt-code-line">88. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">displayType(</span><span style="color:#0000ff">$variable</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">89. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// displays the type of $variable</span></span></span>
+<span class="odt-code-line">90. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;type[</span><span style="color:#0000ff">$variable</span><span style="color:#008000">]=&quot; </span><span style="color:#000000">. getType(</span><span style="color:#0000ff">$variable</span><span style="color:#000000">) . </span><span style="color:#008000">&quot;\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">91. }</span>
+<span class="odt-code-line">92. </span>
+<span class="odt-code-line">93. //----------------------------------</span>
+<span class="odt-code-line">94. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">f1(</span><span style="color:#0000ff">$param</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">95. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// adds 10 to $param</span></span></span>
+<span class="odt-code-line">96. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">return </span></span><span style="color:#0000ff">$param </span><span style="color:#000000">+</span><span style="color:#000080"> 10</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">97. }</span>
+<span class="odt-code-line">98. </span>
+<span class="odt-code-line">99. //----------------------------------</span>
+<span class="odt-code-line">100. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">f2() {</span></span>
+<span class="odt-code-line">101. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// returns 3 values</span></span></span>
+<span class="odt-code-line">102. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">return array</span></span><span style="color:#000000">(</span><span style="color:#008000">&quot;one&quot;</span><span style="color:#000000">,</span><span style="color:#000080"> 0</span><span style="color:#000000">,</span><span style="color:#000080"> 100</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">103. }</span>
+<span class="odt-code-line">104. ?&gt;</span>
+</code></pre></div>
+
+<p><strong>Los resultados</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>1. name=dupont
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>2. array[0]=one
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>3. array[1]=two
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>4. array[2]=3
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>5. array[3]=4
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>6. [string1, string2, string1string2]
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>7. string = string1
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>8. type[4] = integer
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>9. type[string1] = string
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>10. type[Array] = array
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>11. type[changed]=string
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>12. res1=14
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>13. (res1, res2, res3) = [1, 0, 100]
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>14. t[0] = one
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>15. t[1] = 0
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>16. t[2] = 100
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>17. t[0] = 1
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>18. t[2] = 100
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>19. t[0]=8
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>20. t[1]=5
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>21. sum=13
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<ul>
+<li>Línea 5: En PHP, no se declaran los tipos de variables. Las variables tienen un tipo dinámico que puede cambiar con el tiempo</li>
+<li>$name representa la variable con el identificador <em>nombre</em></li>
+<li>Línea 8: Para mostrar texto en la pantalla, puede utilizar la función <em>imprimir</em> o la declaración <em>echo</em> declaración</li>
+<li>Línea 11: La palabra clave <code>*matriz*</code> se utiliza para definir un array. La variable <em><code>$nombre[$i]</code></em> representa el <em><code>$i</code>th</em> del elemento <em><code>$array</code></em> matriz.</li>
+<li>línea 14: el <em>count($tabla)</em> devuelve el número de elementos en <em>tabla</em> matriz</li>
+<li>línea 18: las cadenas se encierran entre comillas dobles &quot; o simples &#x27;. Dentro de las comillas dobles, las variables <em>$variable</em> pero no dentro de comillas simples.</li>
+<li>línea 21: el <em>lista</em> permite agrupar variables en una lista y asignarles un valor con una sola operación de asignación. Aquí, <em>$cadena1=&quot;cadena1&quot;</em> y <em>$cadena2=&quot;cadena2</em>&quot;.</li>
+<li>línea 24: el operador . es el operador de concatenación de cadenas.</li>
+<li>línea 88: la palabra clave <em>función</em> define una función. Una función puede o no devolver valores utilizando la función <em>devolver</em> declaración. El código de llamada puede ignorar o recuperar los resultados de una función. Una función puede definirse en cualquier parte del código.</li>
+<li>Línea 90: La función predefinida <em>getType($variable)</em> devuelve una cadena que representa el tipo de <em>$variable</em>. Este tipo puede cambiar con el tiempo.</li>
+<li>Línea 79: La función predefinida <em>salida</em> termina el script.</li>
+</ul>
+<p><a id="refheading398521881943603"></a></p>
+<h2 id="32-ambito-variable">3.2. Ámbito variable</h2>
+<p><a id="refheading398541881943603"></a></p>
+<h3 id="321-programa-1-example_02">3.2.1. Programa 1 (example_02)</h3>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // scope of variables</span>
+<span class="odt-code-line">4. </span>
+<span class="odt-code-line">5. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">f1() {</span></span>
+<span class="odt-code-line">6. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// we use the global variable $i</span></span></span>
+<span class="odt-code-line">7. <span style="color:#008080">  </span><span style="color:#0000ff">$i </span><span style="color:#000000">= </span><span style="color:#0000ff">&amp;$GLOBALS</span><span style="color:#000000">[</span><span style="color:#008000">&quot;i&quot;</span><span style="color:#000000">];</span></span>
+<span class="odt-code-line">8. <span style="color:#008080">  </span><span style="color:#000000">$i++;</span></span>
+<span class="odt-code-line">9. <span style="color:#008080">  </span><span style="color:#0000ff">$j </span><span style="color:#000000">=</span><span style="color:#000080"> 10</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">10. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;f1[i,j]=[</span><span style="color:#0000ff">$i</span><span style="color:#008000">,</span><span style="color:#0000ff">$j</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">11. }</span>
+<span class="odt-code-line">12. </span>
+<span class="odt-code-line">13. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">f2() {</span></span>
+<span class="odt-code-line">14. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// we use the global variable $i</span></span></span>
+<span class="odt-code-line">15. <span style="color:#008080">  </span><span style="color:#0000ff">$i </span><span style="color:#000000">= </span><span style="color:#0000ff">&amp;$GLOBALS</span><span style="color:#000000">[</span><span style="color:#008000">&quot;i&quot;</span><span style="color:#000000">];</span></span>
+<span class="odt-code-line">16. <span style="color:#008080">  </span><span style="color:#000000">$i++;</span></span>
+<span class="odt-code-line">17. <span style="color:#008080">  </span><span style="color:#0000ff">$j </span><span style="color:#000000">=</span><span style="color:#000080"> 20</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">18. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;f2[i,j]=[</span><span style="color:#0000ff">$i</span><span style="color:#008000">,</span><span style="color:#0000ff">$j</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">19. }</span>
+<span class="odt-code-line">20. </span>
+<span class="odt-code-line">21. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">f3() {</span></span>
+<span class="odt-code-line">22. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// we use a local variable $i</span></span></span>
+<span class="odt-code-line">23. <span style="color:#008080">  </span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 4</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">24. <span style="color:#008080">  </span><span style="color:#0000ff">$j </span><span style="color:#000000">=</span><span style="color:#000080"> 30</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">25. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;f3[i,j]=[</span><span style="color:#0000ff">$i</span><span style="color:#008000">,</span><span style="color:#0000ff">$j</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">26. }</span>
+<span class="odt-code-line">27. </span>
+<span class="odt-code-line">28. // tests</span>
+<span class="odt-code-line">29. <span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">30. <span style="color:#0000ff">$j </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="font-style:italic"><span style="color:#808080">// these two variables are known to a function f via the $GLOBALS array</span></span></span>
+<span class="odt-code-line">31. f1();</span>
+<span class="odt-code-line">32. f2();</span>
+<span class="odt-code-line">33. f3();</span>
+<span class="odt-code-line">34. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;test[i,j]=[</span><span style="color:#0000ff">$i</span><span style="color:#008000">,</span><span style="color:#0000ff">$j</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">35. ?&gt;</span>
+</code></pre></div>
+
+<p><strong>Los resultados</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>1. f1[i,j]=[1,10]
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>2. f2[i,j]=[2,20]
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>3. f3[i,j]=[4,30]
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>4. test[i,j] = [2,0]
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<ul>
+<li>Líneas 29-30: definir dos variables<em>, $i</em> y <em>$j,</em> en el programa principal. Estas variables no se conocen dentro de las funciones. Así, en la línea 9, la variable <em>$j</em> en función <em>f1</em> es una variable local de la función <em>f1</em> y es diferente de la variable <em>$j</em> en el programa principal. Una función puede acceder a una variable <em>$variable</em> desde el programa principal a través de una matriz de variables globales llamada <em>$GLOBALS</em>. En la línea 7, la notación <em>$GLOBALS[&quot;i&quot;]</em> se refiere a la variable global <em>$i</em> del programa principal. Si escribimos </li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$i=$GLOBALS[&quot;i&quot;]
+</code></pre></div>
+<p>una variable local <em>$i</em> se le asigna el valor de la variable global <em>$i</em>. Se trata de dos variables diferentes, y modificando la variable local <em>$i</em> no modificará la variable global <em>$i</em>. La notación</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$i=&amp;Globals[&quot;i&quot;]
+</code></pre></div>
+<p>hace que la variable local <em>$i</em> tenga la misma dirección de memoria que la variable global <em>$i</em>. Manipulación de la variable local <em>$i</em> equivale entonces a manipular la variable global <em>$i</em>.</p>
+<p><a id="refheading398561881943603"></a></p>
+<h3 id="322-programa-2-example_03">3.2.2. Programa 2 (example_03)</h3>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // A variable&#x27;s scope is global to code blocks</span>
+<span class="odt-code-line">4. <span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; {</span></span>
+<span class="odt-code-line">5. <span style="color:#008080">  </span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 4</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">6. <span style="color:#008080">  </span><span style="color:#000000">$i++;</span></span>
+<span class="odt-code-line">7. }</span>
+<span class="odt-code-line">8. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;</span><span style="color:#0000ff">i=$i</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">9. ?&gt;</span>
+</code></pre></div>
+
+<p><strong>Los resultados</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>i=5
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<p>En algunos lenguajes, una variable definida entre llaves tiene un ámbito limitado a esas llaves: no es accesible fuera de ellas. Los resultados anteriores muestran que éste no es el caso en PHP. La variable $i definida en la línea 5 dentro de las llaves es la misma que la utilizada en las líneas 4 y 8 fuera de ellas.</p>
+<p><a id="refheading398581881943603"></a></p>
+<h2 id="33-matrices">3.3. Matrices</h2>
+<p><a id="refheading398601881943603"></a></p>
+<h3 id="331-matrices-unidimensionales-clasicas-example_04">3.3.1. Matrices unidimensionales clásicas (example_04)</h3>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // classic arrays</span>
+<span class="odt-code-line">4. // initialization</span>
+<span class="odt-code-line">5. <span style="color:#0000ff">$tab1 </span><span style="color:#000000">= </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#000080">0</span><span style="color:#000000">,</span><span style="color:#000080"> 1</span><span style="color:#000000">,</span><span style="color:#000080"> 2</span><span style="color:#000000">,</span><span style="color:#000080"> 3</span><span style="color:#000000">,</span><span style="color:#000080"> 4</span><span style="color:#000000">,</span><span style="color:#000080"> 5</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">6. </span>
+<span class="odt-code-line">7. // loop - 1</span>
+<span class="odt-code-line">8. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1 has &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">) . </span><span style="color:#008000">&quot; elements\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">9. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">10. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$tab1[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">11. </span>
+<span class="odt-code-line">12. // loop - 2</span>
+<span class="odt-code-line">13. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1 has &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">) . </span><span style="color:#008000">&quot; elements\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">14. <span style="color:#000000">reset(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">15. <span style="font-weight:bold"><span style="color:#000000">while </span></span><span style="color:#000000">(</span><span style="font-weight:bold"><span style="color:#000000">list</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$key</span><span style="color:#000000">, </span><span style="color:#0000ff">$value</span><span style="color:#000000">) = </span><span style="font-weight:bold"><span style="color:#000000">each</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">))</span></span>
+<span class="odt-code-line">16. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1[</span><span style="color:#0000ff">$key</span><span style="color:#008000">]</span><span style="color:#0000ff">=$value</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">17. </span>
+<span class="odt-code-line">18. // adding elements</span>
+<span class="odt-code-line">19. <span style="color:#0000ff">$tab1</span><span style="color:#000000">[] = $i++;</span></span>
+<span class="odt-code-line">20. <span style="color:#0000ff">$tab1</span><span style="color:#000000">[] = $i++;</span></span>
+<span class="odt-code-line">21. </span>
+<span class="odt-code-line">22. // loop - 3</span>
+<span class="odt-code-line">23. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1 has &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">) . </span><span style="color:#008000">&quot; elements\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">24. <span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">25. <span style="font-weight:bold"><span style="color:#000000">foreach </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$tab1 </span><span style="font-weight:bold"><span style="color:#000000">as </span></span><span style="color:#0000ff">$element</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">26. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$element</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">27. <span style="color:#008080">  </span><span style="color:#000000">$i++;</span></span>
+<span class="odt-code-line">28. }</span>
+<span class="odt-code-line">29. </span>
+<span class="odt-code-line">30. // remove last element</span>
+<span class="odt-code-line">31. <span style="color:#000000">array_pop(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">32. </span>
+<span class="odt-code-line">33. // loop - 4</span>
+<span class="odt-code-line">34. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1 has &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">) . </span><span style="color:#008000">&quot; elements\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">35. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">36. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$tab1[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">37. </span>
+<span class="odt-code-line">38. // remove first element</span>
+<span class="odt-code-line">39. <span style="color:#000000">array_shift(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">40. </span>
+<span class="odt-code-line">41. // loop - 5</span>
+<span class="odt-code-line">42. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1 has &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">) . </span><span style="color:#008000">&quot; elements\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">43. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">44. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1[</span><span style="color:#0000ff">$i</span><span style="color:#008000">] </span><span style="color:#0000ff">= $tab1[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">45. </span>
+<span class="odt-code-line">46. // Add to the end of the array</span>
+<span class="odt-code-line">47. <span style="color:#000000">array_push(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">, </span><span style="color:#000080">-2</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">48. </span>
+<span class="odt-code-line">49. // loop - 6</span>
+<span class="odt-code-line">50. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1 has &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">) . </span><span style="color:#008000">&quot; elements\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">51. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">52. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$tab1[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">53. </span>
+<span class="odt-code-line">54. // Add to the beginning of the array</span>
+<span class="odt-code-line">55. <span style="color:#000000">array_unshift(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">, </span><span style="color:#000080">-1</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">56. </span>
+<span class="odt-code-line">57. // loop - 7</span>
+<span class="odt-code-line">58. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1 has &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">) . </span><span style="color:#008000">&quot; elements\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">59. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$tab1</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">60. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab1[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$tab1[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">61. ?&gt;</span>
+</code></pre></div>
+
+<p><strong>Los resultados</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>1. tab1 has 6 elements
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>2. tab1[0]=0
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>3. tab1[1]=1
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>4. tab1[2]=2
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>5. tab1[3]=3
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>6. tab1[4] = 4
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>7. tab1[5]=5
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>8. tab1 has 6 elements
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>9. tab1[0] = 0
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>10. tab1[1] = 1
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>11. tab1[2]=2
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>12. tab1[3]=3
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>13. tab1[4] = 4
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>14. tab1[5]=5
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>15. tab1 has 8 elements
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>16. tab1[0] = 0
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>17. tab1[1]=1
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>18. tab1[2]=2
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>19. tab1[3]=3
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>20. tab1[4] = 4
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>21. tab1[5]=5
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>22. tab1[6]=6
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>23. tab1[7]=7
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>24. tab1 has 7 elements
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>25. tab1[0]=0
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>26. tab1[1]=1
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>27. tab1[2]=2
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>28. tab1[3]=3
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>29. tab1[4] = 4
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>30. tab1[5]=5
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>31. tab1[6]=6
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>32. tab1 has 6 elements
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>33. tab1[0]=1
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>34. tab1[1]=2
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>35. tab1[2]=3
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>36. tab1[3]=4
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>37. tab1[4] = 5
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>38. tab1[5]=6
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>39. tab1 has 7 elements
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>40. tab1[0]=1
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a>41. tab1[1]=2
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>42. tab1[2]=3
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>43. tab1[3]=4
+<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>44. tab1[4] = 5
+<a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>45. tab1[5]=6
+<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a>46. tab1[6]=-2
+<a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a>47. tab1 has 8 elements
+<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a>48. tab1[0]=-1
+<a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a>49. tab1[1]=1
+<a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>50. tab1[2]=2
+<a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a>51. tab1[3] = 3
+<a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a>52. tab1[4] = 4
+<a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a>53. tab1[5]=5
+<a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a>54. tab1[6]=6
+<a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a>55. tab1[7]=-2
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<p>El programa anterior muestra operaciones para manipular una matriz de valores. Hay dos notaciones para matrices en PHP:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>1. $array = array(&quot;one&quot;, 2, &quot;three&quot;)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>2. $opposites = array(&quot;small&quot; =&gt; &quot;large&quot;, &quot;beautiful&quot; =&gt; &quot;ugly&quot;, &quot;expensive&quot; =&gt; &quot;cheap&quot;)
+</code></pre></div>
+<p>La matriz 1 se denomina matriz y la matriz 2 se denomina diccionario, donde los elementos se denotan como clave =&gt; valor. La notación <em>$opposites[&quot;beautiful&quot;]</em> se refiere al valor asociado a la clave &quot;hermoso&quot; Aquí, ese valor es la cadena &quot;feo&quot; La matriz 1 es simplemente una variante del diccionario y podría escribirse como:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$array=array(0=&gt;&quot;one&quot;,1=&gt;2,2=&gt;&quot;three&quot;)
+</code></pre></div>
+<p>Así, tenemos <em>$array[2]=&quot;tres&quot;</em>. En última instancia, sólo hay diccionarios. En el caso de una matriz clásica de <em>n</em> las claves son los enteros del rango [<em>0,n-1</em>].</p>
+<ul>
+<li>Línea 15: El <em>each($array)</em> le permite iterar sobre un diccionario. En cada llamada, devuelve un par (clave, valor) del mismo.</li>
+<li>Línea 14: El <em>reset($diccionario)</em> establece el valor <em>cada</em> al primer par (clave, valor) del diccionario.</li>
+<li>línea 15: el <em>mientras que</em> se detiene cuando <em>cada</em> devuelve un par vacío al final del diccionario.</li>
+<li>línea 19: la notación <em>$array[]=valor</em> añade el elemento <em>valor</em> como último elemento de <em>$array</em>.</li>
+<li>línea 25: se itera sobre la matriz utilizando una función <em>foreach</em>. Esta sintaxis permite iterar sobre un diccionario, y por tanto sobre un array, utilizando dos sintaxis:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>foreach($dictionary as $key=&gt;$value)
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>foreach($array as $value)
+</code></pre></div>
+<p>La primera sintaxis devuelve un (<em>clave,valor</em>) en cada iteración, mientras que la segunda sintaxis devuelve sólo el par <em>valor</em> del diccionario.</p>
+<ul>
+<li>Línea 31: El <em>array_pop($array)</em> elimina el último elemento de <em>$array</em></li>
+<li>línea 39: el <em>array_shift($array)</em> elimina el primer elemento de <em>$array</em></li>
+<li>línea 47: el <em>array_push($array,valor)</em> la función añade <em>valor</em> como último elemento de <em>$array</em></li>
+<li>línea 39: el <em>array_unshift($array,valor)</em> la función añade <em>valor</em> como primer elemento de <em>$array</em></li>
+</ul>
+<p><a id="refheading398621881943603"></a></p>
+<h3 id="332-el-diccionario-example_05">3.3.2. El diccionario (example_05)</h3>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-javascript">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // dictionaries</span>
+<span class="odt-code-line">4. <span style="color:#0000ff">$couples </span><span style="color:#000000">= </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#008000">&quot;Pierre&quot; </span><span style="color:#000000">=&gt; </span><span style="color:#008000">&quot;Gisèle&quot;</span><span style="color:#000000">, </span><span style="color:#008000">&quot;Paul&quot; </span><span style="color:#000000">=&gt; </span><span style="color:#008000">&quot;Virginie&quot;</span><span style="color:#000000">, </span><span style="color:#008000">&quot;Jacques&quot; </span><span style="color:#000000">=&gt; </span><span style="color:#008000">&quot;Lucette&quot;</span><span style="color:#000000">, </span><span style="color:#008000">&quot;Jean&quot; </span><span style="color:#000000">=&gt; </span><span style="color:#008000">&quot;&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">5. </span>
+<span class="odt-code-line">6. // loop - 1</span>
+<span class="odt-code-line">7. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;Number of elements in the dictionary: &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$couples</span><span style="color:#000000">) . </span><span style="color:#008000">&quot;\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">8. <span style="color:#000000">reset(</span><span style="color:#0000ff">$couples</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">9. <span style="font-weight:bold"><span style="color:#000000">while </span></span><span style="color:#000000">(</span><span style="font-weight:bold"><span style="color:#000000">list</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$key</span><span style="color:#000000">, </span><span style="color:#0000ff">$value</span><span style="color:#000000">) = </span><span style="font-weight:bold"><span style="color:#000000">each</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$couples</span><span style="color:#000000">))</span></span>
+<span class="odt-code-line">10. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;spouses[</span><span style="color:#0000ff">$key</span><span style="color:#008000">]</span><span style="color:#0000ff">=$value</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">11. </span>
+<span class="odt-code-line">12. // Sort the dictionary by key</span>
+<span class="odt-code-line">13. <span style="color:#000000">ksort(</span><span style="color:#0000ff">$pairs</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">14. </span>
+<span class="odt-code-line">15. // loop - 2</span>
+<span class="odt-code-line">16. <span style="color:#000000">reset(</span><span style="color:#0000ff">$pairs</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">17. <span style="font-weight:bold"><span style="color:#000000">while </span></span><span style="color:#000000">(</span><span style="font-weight:bold"><span style="color:#000000">list</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$key</span><span style="color:#000000">, </span><span style="color:#0000ff">$value</span><span style="color:#000000">) = </span><span style="font-weight:bold"><span style="color:#000000">each</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$pairs</span><span style="color:#000000">))</span></span>
+<span class="odt-code-line">18. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;pairs[</span><span style="color:#0000ff">$key</span><span style="color:#008000">]</span><span style="color:#0000ff">=$value</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">19. </span>
+<span class="odt-code-line">20. // list of dictionary keys</span>
+<span class="odt-code-line">21. <span style="color:#0000ff">$keys </span><span style="color:#000000">= array_keys(</span><span style="color:#0000ff">$pairs</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">22. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$keys</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">23. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;keys[</span><span style="color:#0000ff">$i</span><span style="color:#008000">] = </span><span style="color:#0000ff">$keys[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">24. </span>
+<span class="odt-code-line">25. // list of dictionary values</span>
+<span class="odt-code-line">26. <span style="color:#0000ff">$values </span><span style="color:#000000">= array_values(</span><span style="color:#0000ff">$pairs</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">27. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$values</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">28. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;values[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$values[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">29. </span>
+<span class="odt-code-line">30. // search for a key</span>
+<span class="odt-code-line">31. <span style="color:#000000">exists(</span><span style="color:#0000ff">$pairs</span><span style="color:#000000">, </span><span style="color:#008000">&quot;Jacques&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">32. <span style="color:#000000">exists(</span><span style="color:#0000ff">$pairs</span><span style="color:#000000">, </span><span style="color:#008000">&quot;Lucette&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">33. <span style="color:#000000">exists(</span><span style="color:#0000ff">$couples</span><span style="color:#000000">, </span><span style="color:#008000">&quot;Jean&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">34. </span>
+<span class="odt-code-line">35. // delete a key-value pair</span>
+<span class="odt-code-line">36. <span style="font-weight:bold"><span style="color:#000000">unset</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$spouses</span><span style="color:#000000">[</span><span style="color:#008000">&quot;Jean&quot;</span><span style="color:#000000">]);</span></span>
+<span class="odt-code-line">37. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;Number of elements in the dictionary: &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$spouses</span><span style="color:#000000">) . </span><span style="color:#008000">&quot;\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">38. <span style="font-weight:bold"><span style="color:#000000">foreach </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$couples </span><span style="font-weight:bold"><span style="color:#000000">as </span></span><span style="color:#0000ff">$key </span><span style="color:#000000">=&gt; </span><span style="color:#0000ff">$value</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">39. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;spouses[</span><span style="color:#0000ff">$key</span><span style="color:#008000">]</span><span style="color:#0000ff">=$value</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">40. }</span>
+<span class="odt-code-line">41. </span>
+<span class="odt-code-line">42. // end</span>
+<span class="odt-code-line">43. <span style="font-weight:bold"><span style="color:#000000">exit</span></span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">44. </span>
+<span class="odt-code-line">45. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">exists(</span><span style="color:#0000ff">$couples</span><span style="color:#000000">, </span><span style="color:#0000ff">$husband</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">46. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// checks if the key $husband exists in the $spouses dictionary</span></span></span>
+<span class="odt-code-line">47. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">if </span></span><span style="color:#000000">(</span><span style="font-weight:bold"><span style="color:#000000">isset</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$spouses</span><span style="color:#000000">[</span><span style="color:#0000ff">$husband</span><span style="color:#000000">]))</span></span>
+<span class="odt-code-line">48. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;The key [</span><span style="color:#0000ff">$mari</span><span style="color:#008000">] exists with the value [</span><span style="color:#0000ff">$conjoints[$mari]</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">49. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">else</span></span></span>
+<span class="odt-code-line">50. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;The key [</span><span style="color:#0000ff">$husband</span><span style="color:#008000">] does not exist\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">51. }</span>
+<span class="odt-code-line">52. </span>
+<span class="odt-code-line">53. ?&gt;</span>
+</code></pre></div>
+
+<p>Los resultados:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>1. Number of elements in the dictionary: 4
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>2. spouses[Pierre]=Gisèle
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>3. spouses[Paul]=Virginie
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>4. spouses[Jacques]=Lucette
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>5. spouses[Jean]=
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>6. spouses[Jacques]=Lucette
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>7. spouses[Jean]=
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>8. spouses[Paul]=Virginie
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>9. spouses[Pierre]=Gisèle
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>10. keys[0]=Jacques
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>11. keys[1]=Jean
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>12. keys[2]=Paul
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>13. keys[3]=Pierre
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>14. values[0]=Lucette
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>15. values[1]=
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>16. values[2]=Virginie
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>17. values[3]=Gisèle
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>18. The key [Jacques] exists and is associated with the value [Lucette]
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>19. The key [Lucette] does not exist
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>20. The key [Jean] exists associated with the value []
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>21. Number of elements in the dictionary: 3
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>22. spouses[Jacques]=Lucette
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>23. spouses[Paul]=Virginie
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>24. spouses[Pierre]=Gisèle
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<p>El código anterior aplica a un diccionario lo que antes vimos para un array simple. Sólo comentaremos las novedades:</p>
+<ul>
+<li>línea 13: el <em>ksort (ordenación por clave)</em> ordena un diccionario en el orden natural de las claves.</li>
+<li>línea 21: el <em>array_keys($diccionario)</em> devuelve la lista de claves del diccionario en forma de matriz</li>
+<li>línea 26: el <em>array_values($diccionario)</em> devuelve la lista de valores del diccionario en forma de matriz</li>
+<li>línea 47: el <em>isset($variable)</em> devuelve verdadero si <em>$variable</em> y falso en caso contrario.</li>
+<li>Línea 36: El <em>unset($variable)</em> borra el archivo <em>$variable</em>.</li>
+</ul>
+<p><a id="refheading398641881943603"></a></p>
+<h3 id="333-matrices-multidimensionales-example_06">3.3.3. Matrices multidimensionales (example_06)</h3>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // Classic multidimensional arrays</span>
+<span class="odt-code-line">4. // initialization</span>
+<span class="odt-code-line">5. <span style="color:#0000ff">$multi </span><span style="color:#000000">= </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#000080">0</span><span style="color:#000000">,</span><span style="color:#000080"> 1</span><span style="color:#000000">,</span><span style="color:#000080"> 2</span><span style="color:#000000">), </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#000080">10</span><span style="color:#000000">,</span><span style="color:#000080"> 11</span><span style="color:#000000">,</span><span style="color:#000080"> 12</span><span style="color:#000000">,</span><span style="color:#000080"> 13</span><span style="color:#000000">), </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#000080">20</span><span style="color:#000000">,</span><span style="color:#000080"> 21</span><span style="color:#000000">,</span><span style="color:#000080"> 22</span><span style="color:#000000">,</span><span style="color:#000080"> 23</span><span style="color:#000000">,</span><span style="color:#000080"> 24</span><span style="color:#000000">));</span></span>
+<span class="odt-code-line">6. // iteration</span>
+<span class="odt-code-line">7. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i1 </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i1 </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$multi</span><span style="color:#000000">); $i1++)</span></span>
+<span class="odt-code-line">8. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i2 </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i2 </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$multi</span><span style="color:#000000">[</span><span style="color:#0000ff">$i1</span><span style="color:#000000">]); $i2++)</span></span>
+<span class="odt-code-line">9. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;multi[</span><span style="color:#0000ff">$i1</span><span style="color:#008000">][</span><span style="color:#0000ff">$i2</span><span style="color:#008000">]=&quot; </span><span style="color:#000000">. </span><span style="color:#0000ff">$multi</span><span style="color:#000000">[</span><span style="color:#0000ff">$i1</span><span style="color:#000000">][</span><span style="color:#0000ff">$i2</span><span style="color:#000000">] . </span><span style="color:#008000">&quot;\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">10. // multidimensional arrays</span>
+<span class="odt-code-line">11. // initialization</span>
+<span class="odt-code-line">12. <span style="color:#0000ff">$multi </span><span style="color:#000000">= </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#008000">&quot;zero&quot; </span><span style="color:#000000">=&gt; </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#000080">0</span><span style="color:#000000">,</span><span style="color:#000080"> 1</span><span style="color:#000000">,</span><span style="color:#000080"> 2</span><span style="color:#000000">), </span><span style="color:#008000">&quot;one&quot; </span><span style="color:#000000">=&gt; </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#000080">10</span><span style="color:#000000">,</span><span style="color:#000080"> 11</span><span style="color:#000000">,</span><span style="color:#000080"> 12</span><span style="color:#000000">,</span><span style="color:#000080"> 13</span><span style="color:#000000">), </span><span style="color:#008000">&quot;two&quot; </span><span style="color:#000000">=&gt; </span><span style="font-weight:bold"><span style="color:#000000">array</span></span><span style="color:#000000">(</span><span style="color:#000080">20</span><span style="color:#000000">,</span><span style="color:#000080"> 21</span><span style="color:#000000">,</span><span style="color:#000080"> 22</span><span style="color:#000000">,</span><span style="color:#000080"> 23</span><span style="color:#000000">,</span><span style="color:#000080"> 24</span><span style="color:#000000">));</span></span>
+<span class="odt-code-line">13. // iteration</span>
+<span class="odt-code-line">14. <span style="font-weight:bold"><span style="color:#000000">foreach </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$multi </span><span style="font-weight:bold"><span style="color:#000000">as </span></span><span style="color:#0000ff">$key </span><span style="color:#000000">=&gt; </span><span style="color:#0000ff">$value</span><span style="color:#000000">)</span></span>
+<span class="odt-code-line">15. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i2 </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i2 </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$value</span><span style="color:#000000">); $i2++)</span></span>
+<span class="odt-code-line">16. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;multi[</span><span style="color:#0000ff">$key</span><span style="color:#008000">][</span><span style="color:#0000ff">$i2</span><span style="color:#008000">]=&quot; </span><span style="color:#000000">. </span><span style="color:#0000ff">$multi</span><span style="color:#000000">[</span><span style="color:#0000ff">$key</span><span style="color:#000000">][</span><span style="color:#0000ff">$i2</span><span style="color:#000000">] . </span><span style="color:#008000">&quot;\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">17. ?&gt;</span>
+</code></pre></div>
+
+<p><strong>Resultados</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>1. multi[0][0]=0
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>2. multi[0][1]=1
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>3. multi[0][2]=2
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>4. multi[1][0]=10
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>5. multi[1][1]=11
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>6. multi[1][2]=12
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>7. multi[1][3]=13
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>8. multi[2][0]=20
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>9. multi[2][1]=21
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>10. multi[2][2]=22
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>11. multi[2][3]=23
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>12. multi[2][4]=24
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>13. multi[zero][0]=0
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>14. multi[zero][1]=1
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>15. multi[zero][2]=2
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>16. multi[one][0]=10
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>17. multi[one][1]=11
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>18. multi[one][2]=12
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>19. multi[one][3]=13
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>20. multi[two][0]=20
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>21. multi[two][1]=21
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>22. multi[two][2]=22
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>23. multi[two][3]=23
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>24. multi[two][4]=24
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<ul>
+<li>línea 5: los elementos del <em>multi</em> son a su vez matrices</li>
+<li>línea 12: el <em>multi</em> se convierte en un diccionario (<em>clave, valor</em>) donde cada <em>valor</em> es una matriz</li>
+</ul>
+<p><a id="refheading398661881943603"></a></p>
+<h3 id="334-enlaces-entre-cadenas-y-matrices-example_07">3.3.4. Enlaces entre cadenas y matrices (example_07)</h3>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-javascript">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // string to array</span>
+<span class="odt-code-line">4. <span style="color:#0000ff">$string </span><span style="color:#000000">= </span><span style="color:#008000">&quot;1:2:3:4&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">5. <span style="color:#0000ff">$array </span><span style="color:#000000">= explode(</span><span style="color:#008000">&quot;:&quot;</span><span style="color:#000000">, </span><span style="color:#0000ff">$string</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">6. </span>
+<span class="odt-code-line">7. // iterate through array</span>
+<span class="odt-code-line">8. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;array has &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$tab</span><span style="color:#000000">) . </span><span style="color:#008000">&quot; elements\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">9. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$tab</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">10. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$tab[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">11. </span>
+<span class="odt-code-line">12. // array to string</span>
+<span class="odt-code-line">13. <span style="color:#0000ff">$string2 </span><span style="color:#000000">= implode(</span><span style="color:#008000">&quot;:&quot;</span><span style="color:#000000">, </span><span style="color:#0000ff">$tab</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">14. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;</span><span style="color:#0000ff">string2=$string2</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">15. </span>
+<span class="odt-code-line">16. // let&#x27;s add an empty field</span>
+<span class="odt-code-line">17. <span style="color:#0000ff">$string</span><span style="color:#000000">.=</span><span style="color:#008000">&quot;:&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">18. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;</span><span style="color:#0000ff">string=$string</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">19. <span style="color:#0000ff">$tab </span><span style="color:#000000">= explode(</span><span style="color:#008000">&quot;:&quot;</span><span style="color:#000000">, </span><span style="color:#0000ff">$string</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">20. </span>
+<span class="odt-code-line">21. // loop through the array</span>
+<span class="odt-code-line">22. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab has &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$tab</span><span style="color:#000000">) . </span><span style="color:#008000">&quot; elements\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">23. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$tab</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">24. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$tab[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">; </span><span style="font-style:italic"><span style="color:#808080">// we now have 5 elements, the last one being empty</span></span></span>
+<span class="odt-code-line">25.   </span>
+<span class="odt-code-line">26. // let&#x27;s add an empty field again</span>
+<span class="odt-code-line">27. <span style="color:#0000ff">$string</span><span style="color:#000000">.=</span><span style="color:#008000">&quot;:&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">28. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;</span><span style="color:#0000ff">string=$string</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">29. <span style="color:#0000ff">$tab </span><span style="color:#000000">= explode(</span><span style="color:#008000">&quot;:&quot;</span><span style="color:#000000">, </span><span style="color:#0000ff">$string</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">30. </span>
+<span class="odt-code-line">31. // iterate through the array</span>
+<span class="odt-code-line">32. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab a &quot; </span><span style="color:#000000">. count(</span><span style="color:#0000ff">$tab</span><span style="color:#000000">) . </span><span style="color:#008000">&quot; elements\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">33. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$tab</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">34. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;tab[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$tab[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">; </span><span style="font-style:italic"><span style="color:#808080">// we now have 6 elements, the last two being empty</span></span></span>
+<span class="odt-code-line">35. ?&gt;</span>
+</code></pre></div>
+
+<p><strong>Resultados</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>1. tab has 4 elements
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>2. tab[0]=1
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>3. tab[1]=2
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>4. tab[2]=3
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>5. tab[3]=4
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>6. string2 = 1:2:3:4
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>7. array=1:2:3:4:
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>8. tab with 5 elements
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>9. tab[0]=1
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>10. tab[1]=2
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>11. tab[2]=3
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>12. tab[3]=4
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>13. tab[4]=
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>14. string = 1:2:3:4::
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>15. tab has 6 elements
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>16. tab[0]=1
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>17. tab[1]=2
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>18. tab[2]=3
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>19. tab[3]=4
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>20. tab[4]=
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>21. tab[5]=
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<ul>
+<li>Línea 5: El <em>explode($separador,$cadena)</em> recupera los campos de <em>$cadena</em> separados por <em>$separador</em>. Así, <em>explode(&quot;:&quot;,$cadena)</em> devuelve los elementos de <em>$cadena</em> separadas por la cadena &quot;:&quot; como una matriz.</li>
+<li>La función implode($separador,$matriz) realiza la operación contraria a la función explode. Devuelve una cadena formada por los elementos de $array separados por $separador.</li>
+</ul>
+<p><a id="refheading398681881943603"></a></p>
+<h2 id="34-cuerdas">3.4. Cuerdas</h2>
+<p><a id="refheading398701881943603"></a></p>
+<h3 id="341-sintaxis-example_08">3.4.1. Sintaxis (example_08)</h3>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // string notation</span>
+<span class="odt-code-line">4. <span style="color:#0000ff">$string1 </span><span style="color:#000000">= </span><span style="color:#008000">&quot;one&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">5. <span style="color:#0000ff">$string2 </span><span style="color:#000000">= </span><span style="color:#008000">&#x27;one&#x27;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">6. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;[</span><span style="color:#0000ff">$string1</span><span style="color:#008000">,</span><span style="color:#0000ff">$string2</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">7. ?&gt;</span>
+</code></pre></div>
+
+<p><strong>Resultados</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>[one,one]
+</code></pre></div>
+<p><a id="refheading398721881943603"></a></p>
+<h3 id="342-comparacion-example_09">3.4.2. Comparación (example_09)</h3>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // string comparison tests</span>
+<span class="odt-code-line">4. <span style="color:#000000">compare(</span><span style="color:#008000">&quot;abcd&quot;</span><span style="color:#000000">, </span><span style="color:#008000">&quot;abcd&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">5. <span style="color:#000000">compare(</span><span style="color:#008000">&quot;&quot;</span><span style="color:#000000">, </span><span style="color:#008000">&quot;&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">6. <span style="color:#000000">compare(</span><span style="color:#008000">&quot;1&quot;</span><span style="color:#000000">, </span><span style="color:#008000">&quot;&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">7. <span style="font-weight:bold"><span style="color:#000000">exit</span></span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">8. </span>
+<span class="odt-code-line">9. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">compare(</span><span style="color:#0000ff">$string1</span><span style="color:#000000">, </span><span style="color:#0000ff">$string2</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">10. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// compare string1 and string2</span></span></span>
+<span class="odt-code-line">11. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">if </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$string1 </span><span style="color:#000000">== </span><span style="color:#0000ff">$string2</span><span style="color:#000000">)</span></span>
+<span class="odt-code-line">12. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;[</span><span style="color:#0000ff">$string1</span><span style="color:#008000">] is equal to [</span><span style="color:#0000ff">$string2</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">13. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">else</span></span></span>
+<span class="odt-code-line">14. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;[</span><span style="color:#0000ff">$string1</span><span style="color:#008000">] is different from [</span><span style="color:#0000ff">$string2</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">15. }</span>
+<span class="odt-code-line">16. </span>
+<span class="odt-code-line">17. ?&gt;</span>
+</code></pre></div>
+
+<p>Resultados:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>1. [abcd] is equal to [abcd]
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>2. [] is equal to []
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>3. [1] is not equal to []
+</code></pre></div>
+<p><a id="refheading398741881943603"></a></p>
+<h2 id="35-expresiones-regulares-example_10">3.5. Expresiones regulares (example_10)</h2>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // Regular expressions in PHP</span>
+<span class="odt-code-line">4. // extract the different fields from a string</span>
+<span class="odt-code-line">5. </span>
+<span class="odt-code-line">6. // the pattern: a sequence of digits surrounded by any characters</span>
+<span class="odt-code-line">7. // we only want to extract the sequence of digits</span>
+<span class="odt-code-line">8. <span style="color:#0000ff">$pattern </span><span style="color:#000000">= </span><span style="color:#008000">&quot;/(\d+)/&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">9. // compare the string to the pattern</span>
+<span class="odt-code-line">10. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;xyz1234abcd&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">11. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;12 34&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">12. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;abcd&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">13. </span>
+<span class="odt-code-line">14. // the pattern: a sequence of digits surrounded by any characters</span>
+<span class="odt-code-line">15. // We want the sequence of digits as well as the fields that follow and precede it</span>
+<span class="odt-code-line">16. <span style="color:#0000ff">$pattern </span><span style="color:#000000">= </span><span style="color:#008000">&quot;/^(.*?)(\d+)(.*?)$/&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">17. // we match the string against the pattern</span>
+<span class="odt-code-line">18. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;xyz1234abcd&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">19. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;12 34&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">20. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;abcd&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">21. </span>
+<span class="odt-code-line">22. // the pattern - a date in dd/mm/yy format</span>
+<span class="odt-code-line">23. <span style="color:#0000ff">$pattern </span><span style="color:#000000">= </span><span style="color:#008000">&quot;/^\s*(\d\d)\/(\d\d)\/(\d\d)\s*$/&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">24. <span style="color:#000000">compare(</span><span style="color:#0000ff">$template</span><span style="color:#000000">, </span><span style="color:#008000">&quot;10/05/97&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">25. <span style="color:#000000">compare(</span><span style="color:#0000ff">$template</span><span style="color:#000000">, </span><span style="color:#008000">&quot; 04/04/01 &quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">26. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;5/1/01&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">27. </span>
+<span class="odt-code-line">28. // the pattern - a decimal number</span>
+<span class="odt-code-line">29. <span style="color:#0000ff">$pattern </span><span style="color:#000000">= </span><span style="color:#008000">&quot;/^\s*([+|-]?)\s*(\d+\.\d*|\.\d+|\d+)\s*/&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">30. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;187.8&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">31. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;-0.6&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">32. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;4&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">33. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;.6&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">34. <span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#008000">&quot;4.&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">35. <span style="color:#000000">compare(</span><span style="color:#0000ff">$model</span><span style="color:#000000">, </span><span style="color:#008000">&quot; + 4&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">36. </span>
+<span class="odt-code-line">37. // end</span>
+<span class="odt-code-line">38. <span style="font-weight:bold"><span style="color:#000000">exit</span></span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">39. </span>
+<span class="odt-code-line">40. // --------------------------------------------------------------------------</span>
+<span class="odt-code-line">41. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">compare(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#0000ff">$string</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">42. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// compares the string $string to the pattern $pattern</span></span></span>
+<span class="odt-code-line">43. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// compares the string to the pattern</span></span></span>
+<span class="odt-code-line">44. <span style="color:#008080">  </span><span style="color:#0000ff">$match </span><span style="color:#000000">= preg_match(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#0000ff">$string</span><span style="color:#000000">, </span><span style="color:#0000ff">$fields</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">45. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// display results</span></span></span>
+<span class="odt-code-line">46. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;\nResults(</span><span style="color:#0000ff">$pattern</span><span style="color:#008000">,</span><span style="color:#0000ff">$string</span><span style="color:#008000">)\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">47. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">if </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$match</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">48. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$fields</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">49. <span style="color:#008080">      </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;fields[</span><span style="color:#0000ff">$i</span><span style="color:#008000">] = </span><span style="color:#0000ff">$fields[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">50. <span style="color:#008080">  </span><span style="color:#000000">} </span><span style="font-weight:bold"><span style="color:#000000">else</span></span></span>
+<span class="odt-code-line">51. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;The string [</span><span style="color:#0000ff">$string</span><span style="color:#008000">] does not match the pattern [</span><span style="color:#0000ff">$pattern</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">52. }</span>
+<span class="odt-code-line">53. ?&gt;</span>
+</code></pre></div>
+
+<p>Resultados:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>1. Results(/(\d+)/,xyz1234abcd)
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>2. fields[0]=1234
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>3. fields[1]=1234
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>4. 
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>5. Results(/(\d+)/,12 34)
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>6. fields[0]=12
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>7. fields[1]=12
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>8. 
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>9. Results(/(\d+)/,abcd)
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>10. The string [abcd] does not match the pattern [/(\d+)/]
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>11. 
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>12. Results(/^(.*?)(\d+)(.*?)$/,xyz1234abcd)
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>13. fields[0]=xyz1234abcd
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>14. fields[1]=xyz
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>15. fields[2]=1234
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>16. fields[3]=abcd
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>17. 
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>18. Results(/^(.*?)(\d+)(.*?)$/,12 34)
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>19. fields[0]=12 34
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>20. fields[1]=
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>21. fields[2]=12
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>22. fields[3] = 34
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>23. 
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>24. Results(/^(.*?)(\d+)(.*?)$/,abcd)
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>25. The string [abcd] does not match the pattern [/^(.*?)(\d+)(.*?)$/]
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a>26. 
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>27. Results(/^\s*(\d\d)\/(\d\d)\/(\d\d)\s*$/,10/05/97)
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>28. fields[0]=10/05/97
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a>29. fields[1]=10
+<a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a>30. fields[2]=05
+<a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a>31. fields[3]=97
+<a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a>32. 
+<a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a>33. Results(/^\s*(\d\d)\/(\d\d)\/(\d\d)\s*$/, 04/04/01 )
+<a id="__codelineno-14-34" name="__codelineno-14-34" href="#__codelineno-14-34"></a>34. fields[0]= 04/04/01  
+<a id="__codelineno-14-35" name="__codelineno-14-35" href="#__codelineno-14-35"></a>35. fields[1]=04
+<a id="__codelineno-14-36" name="__codelineno-14-36" href="#__codelineno-14-36"></a>36. fields[2]=04
+<a id="__codelineno-14-37" name="__codelineno-14-37" href="#__codelineno-14-37"></a>37. fields[3]=01
+<a id="__codelineno-14-38" name="__codelineno-14-38" href="#__codelineno-14-38"></a>38. 
+<a id="__codelineno-14-39" name="__codelineno-14-39" href="#__codelineno-14-39"></a>39. Results(/^\s*(\d\d)\/(\d\d)\/(\d\d)\s*$/,5/1/01)
+<a id="__codelineno-14-40" name="__codelineno-14-40" href="#__codelineno-14-40"></a>40. The string [5/1/01] does not match the pattern [/^\s*(\d\d)\/(\d\d)\/(\d\d)\s*$/]
+<a id="__codelineno-14-41" name="__codelineno-14-41" href="#__codelineno-14-41"></a>41. 
+<a id="__codelineno-14-42" name="__codelineno-14-42" href="#__codelineno-14-42"></a>42. Results(/^\s*([+|-]?)\s*(\d+\.\d*|\.\d+|\d+)\s*/,187.8)
+<a id="__codelineno-14-43" name="__codelineno-14-43" href="#__codelineno-14-43"></a>43. fields[0]=187.8
+<a id="__codelineno-14-44" name="__codelineno-14-44" href="#__codelineno-14-44"></a>44. fields[1]=
+<a id="__codelineno-14-45" name="__codelineno-14-45" href="#__codelineno-14-45"></a>45. fields[2]=187.8
+<a id="__codelineno-14-46" name="__codelineno-14-46" href="#__codelineno-14-46"></a>46. 
+<a id="__codelineno-14-47" name="__codelineno-14-47" href="#__codelineno-14-47"></a>47. Results(/^\s*([+|-]?)\s*(\d+\.\d*|\.\d+|\d+)\s*/,-0.6)
+<a id="__codelineno-14-48" name="__codelineno-14-48" href="#__codelineno-14-48"></a>48. fields[0]=-0.6
+<a id="__codelineno-14-49" name="__codelineno-14-49" href="#__codelineno-14-49"></a>49. fields[1]=-
+<a id="__codelineno-14-50" name="__codelineno-14-50" href="#__codelineno-14-50"></a>50. fields[2]=0.6
+<a id="__codelineno-14-51" name="__codelineno-14-51" href="#__codelineno-14-51"></a>51. 
+<a id="__codelineno-14-52" name="__codelineno-14-52" href="#__codelineno-14-52"></a>52. Results(/^\s*([+|-]?)\s*(\d+\.\d*|\.\d+|\d+)\s*/,4)
+<a id="__codelineno-14-53" name="__codelineno-14-53" href="#__codelineno-14-53"></a>53. fields[0]=4
+<a id="__codelineno-14-54" name="__codelineno-14-54" href="#__codelineno-14-54"></a>54. fields[1]=
+<a id="__codelineno-14-55" name="__codelineno-14-55" href="#__codelineno-14-55"></a>55. fields[2]=4
+<a id="__codelineno-14-56" name="__codelineno-14-56" href="#__codelineno-14-56"></a>56. 
+<a id="__codelineno-14-57" name="__codelineno-14-57" href="#__codelineno-14-57"></a>57. Results(/^\s*([+|-]?)\s*(\d+\.\d*|\.\d+|\d+)\s*/,.6)
+<a id="__codelineno-14-58" name="__codelineno-14-58" href="#__codelineno-14-58"></a>58. fields[0]=.6
+<a id="__codelineno-14-59" name="__codelineno-14-59" href="#__codelineno-14-59"></a>59. fields[1]=
+<a id="__codelineno-14-60" name="__codelineno-14-60" href="#__codelineno-14-60"></a>60. fields[2]=.6
+<a id="__codelineno-14-61" name="__codelineno-14-61" href="#__codelineno-14-61"></a>61. 
+<a id="__codelineno-14-62" name="__codelineno-14-62" href="#__codelineno-14-62"></a>62. Results(/^\s*([+|-]?)\s*(\d+\.\d*|\.\d+|\d+)\s*/,4.)
+<a id="__codelineno-14-63" name="__codelineno-14-63" href="#__codelineno-14-63"></a>63. fields[0]=4.
+<a id="__codelineno-14-64" name="__codelineno-14-64" href="#__codelineno-14-64"></a>64. fields[1]=
+<a id="__codelineno-14-65" name="__codelineno-14-65" href="#__codelineno-14-65"></a>65. fields[2]=4.
+<a id="__codelineno-14-66" name="__codelineno-14-66" href="#__codelineno-14-66"></a>66. 
+<a id="__codelineno-14-67" name="__codelineno-14-67" href="#__codelineno-14-67"></a>67. Results(/^\s*([+|-]?)\s*(\d+\.\d*|\.\d+|\d+)\s*/, + 4)
+<a id="__codelineno-14-68" name="__codelineno-14-68" href="#__codelineno-14-68"></a>68. fields[0] = + 4
+<a id="__codelineno-14-69" name="__codelineno-14-69" href="#__codelineno-14-69"></a>69. fields[1]=+
+<a id="__codelineno-14-70" name="__codelineno-14-70" href="#__codelineno-14-70"></a>70. fields[2]=4
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<ul>
+<li>Líneas 3-4: Aquí utilizamos expresiones regulares para extraer los distintos campos de una cadena. Las expresiones regulares nos permiten superar las limitaciones de la función <em>implosionar</em> función. El principio es comparar una cadena con otra cadena llamada <em>un patrón</em> utilizando el <em>preg_match</em> función:</li>
+</ul>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span style="color:#0000ff">$matches </span><span style="color:#000000">= preg_match(</span><span style="color:#0000ff">$pattern</span><span style="color:#000000">, </span><span style="color:#0000ff">$string</span><span style="color:#000000">, </span><span style="color:#0000ff">$fields</span><span style="color:#000000">);</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">En </span><em><span style="color: #000000">preg_match</span></em><span style="color: #000000"> función devuelve un valor booleano que indica si el </span><em><span style="color: #000000">patrón </span></em><span style="color: #000000">en el </span><em><span style="color: #000000">cadena</span></em><span style="color: #000000">. Si es así, </span><em><span style="color: #000000">$campos[0] </span></em><span style="color: #000000">representa la subcadena que coincide con el patrón. Además, si el patrón contiene subpatrones encerrados entre paréntesis, </span><em><span style="color: #000000">$campos[1] </span></em><span style="color: #000000">es la parte de </span><em><span style="color: #000000">$cadena </span></em><span style="color: #000000">correspondiente al primero subpatrón, </span><em><span style="color: #000000">$campos[2] </span></em><span style="color: #000000">es la parte de </span><em><span style="color: #000000">$cadena </span></em><span style="color: #000000">correspondiente al segundo subpatrón, y así sucesivamente... </span></p>
+<p><span style="color: #000000">Considere la primero ejemplo. El patrón se define en la línea 8: denota una secuencia de uno o más dígitos (+) (\d) situados en cualquier lugar de una cadena. Además, el patrón define un sub-patrón encerrado entre paréntesis.</span></p>
+<ul>
+<li><span style="color: #000000">Línea 10: el patrón </span><strong><span style="color: #000000">/(\d+)/ </span></strong><span style="color: #000000">(una secuencia de uno o más dígitos en cualquier lugar de la cadena) se compara con la cadena &quot;</span><strong>xyz1234abcd</strong>&quot;. Vemos que la subcadena 1234 coincide con el patrón. Por lo tanto, $fields[0] será igual a &quot;1234&quot;. Además, el patrón tiene subpatrones encerrados entre paréntesis. Tendremos $campos[1]=&quot;1234&quot;.</li>
+<li>Línea 11: <span style="color: #000000">El modelo </span><strong><span style="color: #000000">/(\d+)/ </span></strong><span style="color: #000000">se compara con la cadena &quot;</span><strong>12 34</strong>&quot;. Vemos que las subcadenas 12 y 34 coinciden con el patrón. La comparación se detiene en la primera subcadena que coincide con el patrón. Por lo tanto, $campos[0] = 12 y $campos[1] = 12.</li>
+<li>Línea 12: <span style="color: #000000">El modelo </span><strong><span style="color: #000000">/(\d+)/ </span></strong><span style="color: #000000">se compara con la cadena &quot;</span><strong>abcd</strong>&quot;. No se encuentra ninguna coincidencia.</li>
+</ul>
+<p>Vamos a explicar los patrones utilizados en el resto del código:</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span style="color:#0000ff">$pattern </span><span style="color:#000000">= </span><span style="color:#008000">&quot;/^(.*?)(\d+)(.*?)$/&quot;</span><span style="color:#000000">;</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">inicio de cadena (^), luego 0 o más (*) caracteres arbitrarios (.), luego 1 o más (+) dígitos, luego de nuevo 0 o más (*) caracteres arbitrarios (.). El patrón (.*) indica 0 o más caracteres arbitrarios. Un patrón de este tipo coincide con cualquier cadena. Así, el patrón /^(.*)(\d+)(.*)$/ nunca se encontrará porque el primer subpatrón (.*) consumirá toda la cadena. El patrón (.*?)(\d+) indica 0 o más caracteres arbitrarios </span><strong><span style="color: #000000">hasta el siguiente subpatrón (?)</span></strong><span style="color: #000000">, en este caso \d+. Por lo tanto, los dígitos ya no son capturados por el patrón (.*). Por lo tanto, el patrón anterior coincide con [inicio de cadena (^), una secuencia de cualquier carácter (.*?), una secuencia de uno o más dígitos (\d+), una secuencia de cualquier carácter (.*?), final de cadena ($)].</span></p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span style="color:#0000ff">$pattern </span><span style="color:#000000">= </span><span style="color:#008000">&quot;/^\s*(\d\d)\/(\d\d)\/(\d\d)\s*$/&quot;</span><span style="color:#000000">;</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">coincide con [inicio de cadena (^), 2 dígitos (\d\d), el carácter / (\/), 2 dígitos, /, 2 dígitos, una secuencia de 0 o más espacios (\s*), final de cadena ($)]</span></p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span style="color:#0000ff">$pattern </span><span style="color:#000000">= </span><span style="color:#008000">&quot;/^\s*([+|-]?)\s*(\d+\.\d*|\.\d+|\d+)\s*/&quot;</span><span style="color:#000000">;</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">[inicio de cadena (^), 0 o más espacios (\s*), un signo + o - [+|-] que aparezca 0 o 1 vez (?), una secuencia de 0 o más espacios (\s*), 1 o más dígitos seguidos de un punto decimal seguido de cero o más dígitos (\d+\.\d*) o (|) un punto decimal (\.) seguido de uno o más dígitos (\d+) o (|) uno o más dígitos (\d+), una secuencia de 0 o más espacios (\s*)].</span></p>
+<p><a id="refheading398761881943603"></a></p>
+<h2 id="36-modo-de-paso-de-parametros-de-funcion-example_11">3.6. Modo de paso de parámetros de función (example_11)</h2>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // parameter passing mode</span>
+<span class="odt-code-line">4. </span>
+<span class="odt-code-line">5. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">f(</span><span style="color:#0000ff">&amp;$i</span><span style="color:#000000">, </span><span style="color:#0000ff">$j</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">6. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// $i will be passed by reference</span></span></span>
+<span class="odt-code-line">7. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// $j will be passed by value</span></span></span>
+<span class="odt-code-line">8. <span style="color:#008080">  </span><span style="color:#000000">$i++;</span></span>
+<span class="odt-code-line">9. <span style="color:#008080">  </span><span style="color:#000000">$j++;</span></span>
+<span class="odt-code-line">10. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;f[i,j]=[</span><span style="color:#0000ff">$i</span><span style="color:#008000">,</span><span style="color:#0000ff">$j</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">11. }</span>
+<span class="odt-code-line">12. </span>
+<span class="odt-code-line">13. // ----------------------------------------tests</span>
+<span class="odt-code-line">14. <span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">15. <span style="color:#0000ff">$j </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">16. // $i and $j passed by value</span>
+<span class="odt-code-line">17. <span style="color:#000000">f(</span><span style="color:#0000ff">$i</span><span style="color:#000000">, </span><span style="color:#0000ff">$j</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">18. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;test[i,j]=[</span><span style="color:#0000ff">$i</span><span style="color:#008000">,</span><span style="color:#0000ff">$j</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">19. ?&gt;</span>
+</code></pre></div>
+
+<p><strong>Resultados</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>1. f[i,j]=[1,1]
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>2. test[i,j]=[1,0]
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<p>El código anterior muestra las dos formas de pasar parámetros a una función. Consideremos el siguiente ejemplo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="mf">1.</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">f</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">$a</span><span class="p">,</span><span class="nx">$b</span><span class="p">){</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="mf">2.</span><span class="w"> </span><span class="err">…</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="mf">3.</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="mf">4.</span><span class="w"> </span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="mf">5.</span><span class="w"> </span><span class="c1">// main program</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="mf">6.</span><span class="w"> </span><span class="nx">$i</span><span class="o">=</span><span class="mf">10</span><span class="p">;</span><span class="w"> </span><span class="nx">$j</span><span class="o">=</span><span class="mf">20</span><span class="p">;</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="mf">7.</span><span class="w"> </span><span class="nx">f</span><span class="p">(</span><span class="nx">$i</span><span class="p">,</span><span class="w"> </span><span class="nx">$j</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>línea 1: define los parámetros formales $a y $b de la función f. Esta función manipula estos dos parámetros formales y devuelve un resultado.</li>
+<li>línea 7: llama a la función f con dos parámetros reales $i y $j. Los enlaces entre los parámetros formales ($a, $b) y los parámetros reales ($i, $j) se definen en la línea 7</li>
+<li>&amp;$a: el símbolo &amp; indica que el parámetro formal $a tomará el valor de la dirección del parámetro real $i. En otras palabras, $a y $i son dos referencias a la misma posición de memoria. Manipular el parámetro formal $a equivale a manipular el parámetro real $i. Esto se demuestra con la ejecución del código. Este método de paso es adecuado para parámetros de salida y grandes conjuntos de datos como arrays y diccionarios. Este método de paso se denomina pass-by-reference.</li>
+<li>$b: El parámetro formal $b tomará el valor del parámetro real $j. Esto es pasar por valor. Los parámetros formales y reales son dos variables diferentes. La manipulación del parámetro formal $b no tiene ningún efecto sobre el parámetro real $j. Esto se demuestra por la ejecución del código. Este modo de paso es adecuado para los parámetros de entrada.</li>
+<li>Considere la <em>intercambiar</em> que recibe dos parámetros formales <em>$a</em> y <em>$b</em>. La función intercambia los valores de estos dos parámetros. Así, durante una llamada a swap<em>($i,$j)</em>, el código de llamada espera que se intercambien los valores de los dos parámetros reales. Se trata, por tanto, de parámetros de salida (se modifican). Por lo tanto, escribiremos</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">$a</span><span class="p">,</span><span class="o">&amp;</span><span class="nx">$b</span><span class="p">){....}</span>
+</code></pre></div>
+<p><a id="refheading398781881943603"></a></p>
+<h2 id="37-resultados-devueltos-por-una-funcion-example_12">3.7. Resultados devueltos por una función (example_12)</h2>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // results returned by a function</span>
+<span class="odt-code-line">4. // a function can return multiple values in an array</span>
+<span class="odt-code-line">5. <span style="font-weight:bold"><span style="color:#000000">list</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$res1</span><span style="color:#000000">, </span><span style="color:#0000ff">$res2</span><span style="color:#000000">, </span><span style="color:#0000ff">$res3</span><span style="color:#000000">) = f1(</span><span style="color:#000080">10</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">6. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;[</span><span style="color:#0000ff">$res1</span><span style="color:#008000">,</span><span style="color:#0000ff">$res2</span><span style="color:#008000">,</span><span style="color:#0000ff">$res3</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">7. <span style="color:#0000ff">$res </span><span style="color:#000000">= f1(</span><span style="color:#000080">10</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">8. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt; count(</span><span style="color:#0000ff">$res</span><span style="color:#000000">); $i++)</span></span>
+<span class="odt-code-line">9. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;res[</span><span style="color:#0000ff">$i</span><span style="color:#008000">]</span><span style="color:#0000ff">=$res[$i]</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">10. </span>
+<span class="odt-code-line">11. // a function can return a pseudo-object</span>
+<span class="odt-code-line">12. <span style="color:#0000ff">$res </span><span style="color:#000000">= f2(</span><span style="color:#000080">10</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">13. <span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;[</span><span style="color:#0000ff">$res-&gt;res1</span><span style="color:#008000">,</span><span style="color:#0000ff">$res-&gt;res2</span><span style="color:#008000">,</span><span style="color:#0000ff">$res-&gt;res3</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">14. </span>
+<span class="odt-code-line">15. // end</span>
+<span class="odt-code-line">16. <span style="font-weight:bold"><span style="color:#000000">exit</span></span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">17. </span>
+<span class="odt-code-line">18. // function f1</span>
+<span class="odt-code-line">19. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">f1(</span><span style="color:#0000ff">$value</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">20. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// returns an array ($value+1, $value+2, $value+3)</span></span></span>
+<span class="odt-code-line">21. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">return array</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$value </span><span style="color:#000000">+</span><span style="color:#000080"> 1</span><span style="color:#000000">, </span><span style="color:#0000ff">$value </span><span style="color:#000000">+</span><span style="color:#000080"> 2</span><span style="color:#000000">, </span><span style="color:#0000ff">$value </span><span style="color:#000000">+</span><span style="color:#000080"> 3</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">22. }</span>
+<span class="odt-code-line">23. </span>
+<span class="odt-code-line">24. // function f2</span>
+<span class="odt-code-line">25. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">f2(</span><span style="color:#0000ff">$value</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">26. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// returns a pseudo-object ($value+1, $value+2, $value+3)</span></span></span>
+<span class="odt-code-line">27. <span style="color:#008080">  </span><span style="color:#000000">$res-&gt;res1 = </span><span style="color:#0000ff">$value </span><span style="color:#000000">+</span><span style="color:#000080"> 1</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">28. <span style="color:#008080">  </span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">29. <span style="color:#008080">  </span><span style="color:#000000">$res-&gt;res2 = </span><span style="color:#0000ff">$value </span><span style="color:#000000">+</span><span style="color:#000080"> 2</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">30. <span style="color:#008080">  </span><span style="color:#000000">$res-&gt;res3 = </span><span style="color:#0000ff">$value </span><span style="color:#000000">+</span><span style="color:#000080"> 3</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">31. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// returns the object</span></span></span>
+<span class="odt-code-line">32. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">return </span></span><span style="color:#0000ff">$res</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">33. }</span>
+<span class="odt-code-line">34. </span>
+<span class="odt-code-line">35. ?&gt;</span>
+</code></pre></div>
+
+<p><strong>Resultados</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>1. [11,12,13]
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>2. res[0]=11
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>3. res[1]=12
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>4. res[2]=13
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>5. [11,12,13]
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<ul>
+<li>El programa anterior muestra que una función PHP puede devolver un conjunto de resultados en lugar de uno solo, en forma de array o de objeto. El concepto de objeto se explica con más detalle a continuación</li>
+<li>líneas 19-22: la función f1 devuelve varios valores en forma de matriz</li>
+<li>líneas 25-33: la función f2 devuelve varios valores en forma de objeto</li>
+</ul>
+<p><a id="refheading398801881943603"></a></p>
+<h2 id="38-archivos-de-texto-example_13">3.8. Archivos de texto (example_13)</h2>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line">1. &lt;?php</span>
+<span class="odt-code-line">2. </span>
+<span class="odt-code-line">3. // sequential processing of a text file</span>
+<span class="odt-code-line">4. // This is a set of lines in the format login:pwd:uid:gid:infos:dir:shell</span>
+<span class="odt-code-line">5. // Each line is stored in a dictionary in the form login =&gt; uid:gid:infos:dir:shell</span>
+<span class="odt-code-line">6. </span>
+<span class="odt-code-line">7. // We set the file name</span>
+<span class="odt-code-line">8. <span style="color:#0000ff">$INFOS </span><span style="color:#000000">= </span><span style="color:#008000">&quot;infos.txt&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">9. </span>
+<span class="odt-code-line">10. // open it for writing</span>
+<span class="odt-code-line">11. <span style="font-weight:bold"><span style="color:#000000">if </span></span><span style="color:#000000">(!</span><span style="color:#0000ff">$fic </span><span style="color:#000000">= fopen(</span><span style="color:#0000ff">$INFOS</span><span style="color:#000000">, </span><span style="color:#008000">&quot;w&quot;</span><span style="color:#000000">)) {</span></span>
+<span class="odt-code-line">12. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;Error opening file </span><span style="color:#0000ff">$INFOS </span><span style="color:#008000">for writing\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">13. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">exit</span></span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">14. }</span>
+<span class="odt-code-line">15. </span>
+<span class="odt-code-line">16. // generate arbitrary content</span>
+<span class="odt-code-line">17. <span style="font-weight:bold"><span style="color:#000000">for </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$i </span><span style="color:#000000">=</span><span style="color:#000080"> 0</span><span style="color:#000000">; </span><span style="color:#0000ff">$i </span><span style="color:#000000">&lt;</span><span style="color:#000080"> 100</span><span style="color:#000000">; $i++)</span></span>
+<span class="odt-code-line">18. <span style="color:#008080">  </span><span style="color:#000000">fputs(</span><span style="color:#0000ff">$fic</span><span style="color:#000000">, </span><span style="color:#008000">&quot;</span><span style="color:#0000ff">login$i</span><span style="color:#008000">:</span><span style="color:#0000ff">pwd$i</span><span style="color:#008000">:</span><span style="color:#0000ff">uid$i</span><span style="color:#008000">:</span><span style="color:#0000ff">gid$i</span><span style="color:#008000">:</span><span style="color:#0000ff">infos$i</span><span style="color:#008000">:</span><span style="color:#0000ff">dir$i</span><span style="color:#008000">:</span><span style="color:#0000ff">shell$i</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">19. // close the file</span>
+<span class="odt-code-line">20. <span style="color:#000000">fclose(</span><span style="color:#0000ff">$fic</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">21. </span>
+<span class="odt-code-line">22. // process it - fgets preserves the end-of-line character</span>
+<span class="odt-code-line">23. // this prevents an empty string from being retrieved when reading a blank line</span>
+<span class="odt-code-line">24. // open it for writing</span>
+<span class="odt-code-line">25. <span style="font-weight:bold"><span style="color:#000000">if </span></span><span style="color:#000000">(!</span><span style="color:#0000ff">$fic </span><span style="color:#000000">= fopen(</span><span style="color:#0000ff">$INFOS</span><span style="color:#000000">, </span><span style="color:#008000">&quot;r&quot;</span><span style="color:#000000">)) {</span></span>
+<span class="odt-code-line">26. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;Error opening file </span><span style="color:#0000ff">$INFOS </span><span style="color:#008000">for reading\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">27. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">exit</span></span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">28. }</span>
+<span class="odt-code-line">29. <span style="font-weight:bold"><span style="color:#000000">while </span></span><span style="color:#000000">(</span><span style="color:#0000ff">$line </span><span style="color:#000000">= fgets(</span><span style="color:#0000ff">$fic</span><span style="color:#000000">,</span><span style="color:#000080"> 1000</span><span style="color:#000000">)) {</span></span>
+<span class="odt-code-line">30. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// remove the end-of-line character if present</span></span></span>
+<span class="odt-code-line">31. <span style="color:#008080">  </span><span style="color:#0000ff">$line </span><span style="color:#000000">= cutNewLineChar(</span><span style="color:#0000ff">$line</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">32. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// put the line into an array</span></span></span>
+<span class="odt-code-line">33. <span style="color:#008080">  </span><span style="color:#0000ff">$infos </span><span style="color:#000000">= explode(</span><span style="color:#008000">&quot;:&quot;</span><span style="color:#000000">, </span><span style="color:#0000ff">$line</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">34. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// retrieve the login</span></span></span>
+<span class="odt-code-line">35. <span style="color:#008080">  </span><span style="color:#0000ff">$login </span><span style="color:#000000">= array_shift(</span><span style="color:#0000ff">$info</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">36. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// ignore the password</span></span></span>
+<span class="odt-code-line">37. <span style="color:#008080">  </span><span style="color:#000000">array_shift(</span><span style="color:#0000ff">$info</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">38. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// create an entry in the dictionary</span></span></span>
+<span class="odt-code-line">39. <span style="color:#008080">  </span><span style="color:#0000ff">$dico</span><span style="color:#000000">[</span><span style="color:#0000ff">$login</span><span style="color:#000000">] = </span><span style="color:#0000ff">$infos</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">40. }</span>
+<span class="odt-code-line">41. // close it</span>
+<span class="odt-code-line">42. <span style="color:#000000">fclose(</span><span style="color:#0000ff">$fic</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">43. </span>
+<span class="odt-code-line">44. // use the dictionary</span>
+<span class="odt-code-line">45. <span style="color:#000000">displayInfo(</span><span style="color:#0000ff">$dico</span><span style="color:#000000">, </span><span style="color:#008000">&quot;login10&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">46. <span style="color:#000000">displayInfo(</span><span style="color:#0000ff">$dico</span><span style="color:#000000">, </span><span style="color:#008000">&quot;X&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">47. </span>
+<span class="odt-code-line">48. // end</span>
+<span class="odt-code-line">49. <span style="font-weight:bold"><span style="color:#000000">exit</span></span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">50. </span>
+<span class="odt-code-line">51. // --------------------------------------------------------------------------</span>
+<span class="odt-code-line">52. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">displayInfo(</span><span style="color:#0000ff">$dico</span><span style="color:#000000">, </span><span style="color:#0000ff">$key</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">53. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// displays the value associated with key in the $dico dictionary if it exists</span></span></span>
+<span class="odt-code-line">54. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">if </span></span><span style="color:#000000">(</span><span style="font-weight:bold"><span style="color:#000000">isset</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$dico</span><span style="color:#000000">[</span><span style="color:#0000ff">$key</span><span style="color:#000000">])) {</span></span>
+<span class="odt-code-line">55. <span style="color:#008080">    </span><span style="font-style:italic"><span style="color:#808080">// value exists - is it an array?</span></span></span>
+<span class="odt-code-line">56. <span style="color:#008080">    </span><span style="color:#0000ff">$value </span><span style="color:#000000">= </span><span style="color:#0000ff">$dico</span><span style="color:#000000">[</span><span style="color:#0000ff">$key</span><span style="color:#000000">];</span></span>
+<span class="odt-code-line">57. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">if </span></span><span style="color:#000000">(is_array(</span><span style="color:#0000ff">$value</span><span style="color:#000000">)) {</span></span>
+<span class="odt-code-line">58. <span style="color:#008080">      </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;[</span><span style="color:#0000ff">$key</span><span style="color:#008000">,&quot; </span><span style="color:#000000">. join(</span><span style="color:#008000">&quot;:&quot;</span><span style="color:#000000">, </span><span style="color:#0000ff">$value</span><span style="color:#000000">) . </span><span style="color:#008000">&quot;]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">59. <span style="color:#008080">    </span><span style="color:#000000">} </span><span style="font-weight:bold"><span style="color:#000000">else </span></span><span style="color:#000000">{</span></span>
+<span class="odt-code-line">60. <span style="color:#008080">      </span><span style="font-style:italic"><span style="color:#808080">// $value is not an array</span></span></span>
+<span class="odt-code-line">61. <span style="color:#008080">      </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;[</span><span style="color:#0000ff">$key</span><span style="color:#008000">,</span><span style="color:#0000ff">$value</span><span style="color:#008000">]\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">62. <span style="color:#008080">    </span><span style="color:#000000">}</span></span>
+<span class="odt-code-line">63. <span style="color:#008080">  </span><span style="color:#000000">} </span><span style="font-weight:bold"><span style="color:#000000">else </span></span><span style="color:#000000">{</span></span>
+<span class="odt-code-line">64. <span style="color:#008080">    </span><span style="font-style:italic"><span style="color:#808080">// $key is not a key in the $dico dictionary</span></span></span>
+<span class="odt-code-line">65. <span style="color:#008080">    </span><span style="font-weight:bold"><span style="color:#000000">print </span></span><span style="color:#008000">&quot;The key [</span><span style="color:#0000ff">$key</span><span style="color:#008000">] does not exist\n&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">66. <span style="color:#008080">  </span><span style="color:#000000">}</span></span>
+<span class="odt-code-line">67. }</span>
+<span class="odt-code-line">68. </span>
+<span class="odt-code-line">69. // --------------------------------------------------------------------------</span>
+<span class="odt-code-line">70. <span style="font-weight:bold"><span style="color:#000000">function </span></span><span style="color:#000000">cutNewLinechar(</span><span style="color:#0000ff">$line</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">71. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// remove the end-of-line character from $line if it exists</span></span></span>
+<span class="odt-code-line">72. <span style="color:#008080">  </span><span style="color:#0000ff">$L </span><span style="color:#000000">= strlen(</span><span style="color:#0000ff">$line</span><span style="color:#000000">); </span><span style="font-style:italic"><span style="color:#808080">// line length</span></span></span>
+<span class="odt-code-line">73. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">while </span></span><span style="color:#000000">(substr(</span><span style="color:#0000ff">$line</span><span style="color:#000000">, </span><span style="color:#0000ff">$L </span><span style="color:#000000">-</span><span style="color:#000080"> 1</span><span style="color:#000000">,</span><span style="color:#000080"> 1</span><span style="color:#000000">) == </span><span style="color:#008000">&quot;\n&quot; </span><span style="font-weight:bold"><span style="color:#000000">or </span></span><span style="color:#000000">substr(</span><span style="color:#0000ff">$line</span><span style="color:#000000">, </span><span style="color:#0000ff">$L </span><span style="color:#000000">-</span><span style="color:#000080"> 1</span><span style="color:#000000">,</span><span style="color:#000080"> 1</span><span style="color:#000000">) == </span><span style="color:#008000">&quot;\r&quot;</span><span style="color:#000000">) {</span></span>
+<span class="odt-code-line">74. <span style="color:#008080">    </span><span style="color:#0000ff">$line </span><span style="color:#000000">= substr(</span><span style="color:#0000ff">$line</span><span style="color:#000000">,</span><span style="color:#000080"> 0</span><span style="color:#000000">, </span><span style="color:#0000ff">$L </span><span style="color:#000000">-</span><span style="color:#000080"> 1</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">75. <span style="color:#008080">    </span><span style="color:#000000">$L--;</span></span>
+<span class="odt-code-line">76. <span style="color:#008080">  </span><span style="color:#000000">}</span></span>
+<span class="odt-code-line">77. <span style="color:#008080">  </span><span style="font-style:italic"><span style="color:#808080">// end</span></span></span>
+<span class="odt-code-line">78. <span style="color:#008080">  </span><span style="font-weight:bold"><span style="color:#000000">return</span></span><span style="color:#000000">(</span><span style="color:#0000ff">$line</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">79. }</span>
+<span class="odt-code-line">80. </span>
+<span class="odt-code-line">81. ?&gt;</span>
+</code></pre></div>
+
+<p>El archivo infos.txt:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>login0:pwd0:uid0:gid0:infos0:dir0:shell0
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>login1:pwd1:uid1:gid1:infos1:dir1:shell1
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>login2:pwd2:uid2:gid2:infos2:dir2:shell2
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>...
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>login98:pwd98:uid98:gid98:infos98:dir98:shell98
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>login99:pwd99:uid99:gid99:infos99:dir99:shell99
+</code></pre></div>
+<p><strong>Los resultados</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>1. [login10,uid10:gid10:infos10:dir10:shell10]
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>2. The key [X] does not exist
+</code></pre></div>
+<p><strong>Comentarios</strong></p>
+<ul>
+<li>Línea 11: <em>fopen(nombredearchivo, &quot;w&quot;)</em> abre el archivo <em>nombre de archivo</em> para escribir (<em>w = escribir</em>). Si el fichero no existe, se crea. Si existe, se borra su contenido. Si la creación falla, <em>fopen</em> devuelve <em>falso</em>. En la declaración <strong><em><span style="color: #000000">si </span></em></strong><em><span style="color: #000000">(!</span></em><em><span style="color: #0000ff">$fic </span></em><em><span style="color: #000000">= fopen(</span></em><em><span style="color: #0000ff">$INFOS</span></em><em><span style="color: #000000">, </span></em><em><span style="color: #008000">&quot;w&quot;</span></em><em><span style="color: #000000">)) {…}</span></em><span style="color: #000000">, hay dos operaciones sucesivas: 1) </span><em><span style="color: #000000">$fic=fopen(..)</span></em><span style="color: #000000"> 2) </span><em><span style="color: #000000">if( ! $fic) {...}</span></em></li>
+<li>Línea 18: <em>fputs($fic,$cadena)</em> escribe <em>cadena</em> a la <em>$fic</em> archivo.</li>
+<li>Línea 20: <em>fclose($fic)</em> cierra el <em>$fic</em> archivo.</li>
+<li>línea 25: <em>fopen(nombredearchivo, &quot;r&quot;)</em> abre el <em>nombre de archivo</em> para lectura (<em>r=leer</em>). Si la apertura falla (el fichero no existe), <em>fopen</em> devuelve un valor <em>de falso</em>.</li>
+<li>línea 29: <em>fgets($fic,1000)</em> lee la siguiente línea del fichero, limitada a 1000 caracteres. En la operación <strong><em><span style="color: #000000">mientras que </span></em></strong><em><span style="color: #000000">(</span></em><em><span style="color: #0000ff">$línea </span></em><em><span style="color: #000000">= fgets(</span></em><em><span style="color: #0000ff">$fic</span></em><em><span style="color: #000000">,</span></em><em><span style="color: #000080"> 1000</span></em><em><span style="color: #000000">)) {…}</span></em><span style="color: #000000">, hay dos operaciones sucesivas: 1) $línea = fgets(...) 2) while ( ! $línea). Una vez leído el último carácter del fichero, se ejecuta la operación </span><em><span style="color: #000000">fgets</span></em><span style="color: #000000"> función devuelve una cadena vacía y </span><em><span style="color: #000000">mientras que</span></em><span style="color: #000000"> bucle paradas.</span></li>
+<li><span style="color: #000000">Línea 31: El </span><em><span style="color: #000000">fgets</span></em><span style="color: #000000"> función lee una línea de texto, incluyendo el carácter de nueva línea. La función cutNewLineChar de las líneas 70-79 elimina cualquier carácter de nueva línea.</span></li>
+<li><span style="color: #000000">línea 72: el </span><em><span style="color: #000000">strlen($cadena) </span></em><span style="color: #000000">función devuelve el número de caracteres en </span><em><span style="color: #000000">$cadena</span></em><span style="color: #000000">.</span></li>
+<li><span style="color: #000000">Línea 73: El </span><em><span style="color: #000000">substr($línea, $posición, $tamaño) </span></em><span style="color: #000000">función devuelve </span><em><span style="color: #000000">$tamaño </span></em><span style="color: #000000">caracteres de </span><em><span style="color: #000000">$línea</span></em><span style="color: #000000">, a partir del carácter </span><em><span style="color: #000000">#$posición</span></em><span style="color: #000000">, donde el primero es #0. En máquinas Windows, el marcador de fin de línea es &quot;\r\n&quot;. En máquinas Unix, es la cadena &quot;\n&quot;.</span></li>
+<li><span style="color: #000000">Línea 35: El </span><em><span style="color: #000000">array_shift($array) </span></em><span style="color: #000000">función elimina el primero elemento de </span><em><span style="color: #000000">$array </span></em><span style="color: #000000">y lo devuelve como resultado.</span></li>
+<li><span style="color: #000000">línea 37: el </span><em><span style="color: #000000">array_shift($array) </span></em><span style="color: #000000">función pero su resultado se ignora</span></li>
+<li><span style="color: #000000">Línea 57: El </span><em><span style="color: #000000">is_array($variable) </span></em><span style="color: #000000">función devuelve </span><em><span style="color: #000000">verdadero </span></em><span style="color: #000000">si </span><em><span style="color: #000000">$variable </span></em><span style="color: #000000">es una matriz, </span><em><span style="color: #000000">falso </span></em><span style="color: #000000">de lo contrario.</span></li>
+<li><span style="color: #000000">Línea 58: El </span><em><span style="color: #000000">únase a</span></em><span style="color: #000000"> función hace lo mismo que el </span><em><span style="color: #000000">implosionar</span></em><span style="color: #000000"> función que encontramos antes</span></li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://tahe.developpez.com" target="_blank">
+          https://tahe.developpez.com
+        </a>
+        <br>
+        Este curso-tutorial escrito por <strong>Serge Tahé</strong> se pone a disposición del público según los términos de la
+        <em>Licencia Creative Commons Reconocimiento – Sin uso comercial –
+        Compartir en las mismas condiciones 3.0 no adaptada</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
