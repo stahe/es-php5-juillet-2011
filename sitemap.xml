@@ -2,58 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://stahe.github.io/es-php5-juillet-2011/index.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/creacion-de-un-entorno-de-desarrollo.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/calculo-de-impuestos-ejercicio-con-un-servicio-web-y-una-arquitectura-de-tres-capas.html</loc>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/ejercicio-de-aplicacion---taxes-con-objetos-impots03.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/calculo-de-impuestos-ejercicio-con-xml.html</loc>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/ejercicio-de-aplicacion---taxes.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/conceptos-basicos-de-php.html</loc>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/ejercicio-fiscal-con-mysql.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/configuracion-de-un-entorno-de-desarrollo.html</loc>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/impots-ejercicio-con-un-servicio-web-y-una-arquitectura-de-tres-niveles.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/ejercicio-de-aplicacion-calculo-de-impuestos-con-objetos-impots03.html</loc>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/impots-ejercicio-con-xml.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/ejercicio-de-calculo-de-impuestos-con-mysql.html</loc>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/los-fundamentos-de-php.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/ejercicio-practico-calculo-de-impuestos.html</loc>
+         <lastmod>2026-05-02</lastmod>
+    </url>
+    <url>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/funciones-de-red-de-php.html</loc>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/es-php5-juillet-2011/objetos.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/php-funciones-de-red.html</loc>
-         <lastmod>2026-04-16</lastmod>
-    </url>
-    <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/php-servidores.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/procesamiento-de-documentos-xml-simplexml01.html</loc>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/es-php5-juillet-2011/prologo.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/tratamiento-de-documentos-xml-simplexml01.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/servidores-php.html</loc>
+         <lastmod>2026-05-02</lastmod>
     </url>
     <url>
-         <loc>https://stahe.github.io/es-php5-juillet-2011/utilizacion-del-mysql-dbms.html</loc>
-         <lastmod>2026-04-16</lastmod>
+         <loc>https://stahe.github.io/es-php5-juillet-2011/uso-del-sgbd-mysql.html</loc>
+         <lastmod>2026-05-02</lastmod>
     </url>
 </urlset>

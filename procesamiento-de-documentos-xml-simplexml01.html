@@ -12,11 +12,13 @@
         <meta name="author" content="Serge Tahé">
       
       
-        <link rel="canonical" href="https://stahe.github.io/es-php5-juillet-2011/index.html">
+        <link rel="canonical" href="https://stahe.github.io/es-php5-juillet-2011/procesamiento-de-documentos-xml-simplexml01.html">
       
       
+        <link rel="prev" href="calculo-de-impuestos-ejercicio-con-un-servicio-web-y-una-arquitectura-de-tres-capas.html">
       
-        <link rel="next" href="prologo.html">
+      
+        <link rel="next" href="calculo-de-impuestos-ejercicio-con-xml.html">
       
       
         
@@ -27,7 +29,7 @@
     
     
       
-        <title>Una introducción a PHP5 a través de ejemplos</title>
+        <title>12. Procesamiento de documentos XML (simplexml_01) - Una introducción a PHP5 a través de ejemplos</title>
       
     
     
@@ -89,6 +91,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#12-procesamiento-de-documentos-xml-simplexml_01" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -121,7 +128,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bienvenidos
+              12. Procesamiento de documentos XML (simplexml_01)
             
           </span>
         </div>
@@ -266,17 +273,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
         
   
   
@@ -292,7 +292,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -598,10 +597,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="procesamiento-de-documentos-xml-simplexml01.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="procesamiento-de-documentos-xml-simplexml01.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -617,6 +625,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -665,80 +674,164 @@
 
 
 
-  <h1>Bienvenidos</h1>
+<p><a id="refheading400021881943603"></a></p>
+<h1 id="12-procesamiento-de-documentos-xml-simplexml_01">12. <span style="color: #365f91">Procesamiento de documentos XML (simplexml_01)</span></h1>
+<p>Consideremos el siguiente archivo [data.xml]:</p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-xml">
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;tribu&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#800080">&lt;enseignant&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#800080">&lt;personne</span><span style="font-style:italic;color:#008080"> </span><span style="color:#808000">sexe</span><span style="color:#800080">=&quot;</span><span style="color:#0000ff">M</span><span style="color:#800080">&quot;&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#800080">&lt;nom&gt;</span><span style="color:#000000">dupont</span><span style="color:#800080">&lt;/nom&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#800080">&lt;prenom&gt;</span><span style="color:#000000">jean</span><span style="color:#800080">&lt;/prenom&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#800080">&lt;age&gt;</span><span style="color:#000000">28</span><span style="color:#800080">&lt;/age&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">ceci est un commentaire</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#800080">&lt;/personne&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#800080">&lt;section&gt;</span><span style="color:#000000">27</span><span style="color:#800080">&lt;/section&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#800080">&lt;/enseignant&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#800080">&lt;etudiant&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#800080">&lt;personne</span><span style="font-style:italic;color:#008080"> </span><span style="color:#808000">sexe</span><span style="color:#800080">=&quot;</span><span style="color:#0000ff">F</span><span style="color:#800080">&quot;&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#800080">&lt;nom&gt;</span><span style="color:#000000">martin</span><span style="color:#800080">&lt;/nom&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#800080">&lt;prenom&gt;</span><span style="color:#000000">charline</span><span style="color:#800080">&lt;/prenom&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#800080">&lt;age&gt;</span><span style="color:#000000">22</span><span style="color:#800080">&lt;/age&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#800080">&lt;/personne&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#800080">&lt;formation&gt;</span><span style="color:#000000">dess IAIE</span><span style="color:#800080">&lt;/formation&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#800080">&lt;/etudiant&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;/tribu&gt;</span></span>
+</code></pre></div>
 
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000000C8000000E930F662D2.png" width="100" height="117" style="display:inline-block; margin:4px;width:2.646cm;height:3.083cm;" class="odt-zoomable" data-zoom-src="images/10000000000000C8000000E930F662D2.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000000C8000000E90F858128.png" width="100" height="117" style="display:inline-block; margin:4px;width:2.646cm;height:3.083cm;" class="odt-zoomable" data-zoom-src="images/10000000000000C8000000E90F858128.png" /></td></tr></table>
+<p>Analizamos este documento con el siguiente script:</p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-php">
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;?php</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"> </span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">// file XML to be processed</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">$FILE_NAME</span><span style="color:#008080"> </span><span style="color:#000000">=</span><span style="color:#008080"> </span><span style="color:#008000">&quot;data.xml&quot;</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">// operation</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">$xml</span><span style="color:#008080"> </span><span style="color:#000000">=</span><span style="color:#008080"> </span><span style="color:#000000">simplexml_load_file(</span><span style="color:#0000ff">$FILE_NAME</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print_r(</span><span style="color:#0000ff">$xml</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">print_r(</span><span style="color:#0000ff">$xml</span><span style="color:#000000">-&gt;enseignant-&gt;personne[</span><span style="color:#008000">&#x27;sexe&#x27;</span><span style="color:#000000">]);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">$nom</span>=<span style="color:#0000ff">$xml</span>-&gt;enseignant-&gt;personne-&gt;nom;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">print</span><span style="color:#008080"> </span><span style="color:#008000">&quot;nom=</span><span style="color:#0000ff">$nom</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">$sexe</span><span style="color:#000000">=</span><span style="color:#0000ff">$xml</span><span style="color:#000000">-&gt;enseignant-&gt;personne[</span><span style="color:#008000">&#x27;sexe&#x27;</span><span style="color:#000000">];</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">print</span><span style="color:#008080"> </span><span style="color:#008000">&quot;sexe=</span><span style="color:#0000ff">$sexe</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">$formation</span><span style="color:#000000">=</span><span style="color:#0000ff">$xml</span><span style="color:#000000">-&gt;etudiant-&gt;formation;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">print</span><span style="color:#008080"> </span><span style="color:#008000">&quot;formation=</span><span style="color:#0000ff">$formation</span><span style="color:#008000">\n&quot;</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">print</span><span style="color:#008080"> </span><span style="color:#008000">&quot;isset=&quot;</span><span style="color:#000000">.</span><span style="font-weight:bold;color:#000000">isset</span><span style="color:#000000">(</span><span style="color:#0000ff">$xml</span><span style="color:#000000">-&gt;enseignant-&gt;personne-&gt;nom).</span><span style="color:#008000">&quot;\n&quot;</span><span style="color:#000000">;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="font-weight:bold;color:#000000">print</span><span style="color:#008080"> </span><span style="color:#008000">&quot;isset=&quot;</span><span style="color:#000000">.</span><span style="font-weight:bold;color:#000000">isset</span><span style="color:#000000">(</span><span style="color:#0000ff">$xml</span><span style="color:#000000">-&gt;enseignant-&gt;personne-&gt;xx).</span><span style="color:#008000">&quot;\n&quot;</span><span style="color:#000000">;</span></span></span>
+</code></pre></div>
 
-<p style="font-size: 28px; font-weight: bold; margin-bottom: 1em; line-height: 1.2; color: #2c3e50;">Introducción a PHP5 a través de ejemplos</p>
+<p><span style="color: #000000">Aquí estamos utilizando un módulo de PHP llamado [simpleXML] que nos permite procesar documentos XML.</span></p>
+<ul>
+  <li>línea 6: carga del archivo XML
+  </li>
+  <li>línea 7: visualización del documento XML
+  </li>
+  <li>línea 8: visualización del valor del atributo «sex» de un profesor: <i>&lt;teacher&gt;&lt;person sex=&#x27;...&#x27;&gt;</i>
+  </li>
+  <li>línea 9: visualización del valor de la primera etiqueta <i>&lt;teacher&gt;&lt;person&gt;&lt;name&gt;</i>
+  </li>
+</ul>
 
-<p><strong>Serge Tahé</strong>, julio de 2011</p>
-<hr style="border:0; border-top:0.51pt solid #000000; margin:0.75em 0;" data-odt-border="top" />
-<p>Este documento es una traducción de la <a href="https://stahe.github.io/en-php5-juillet-2011/"><u><span style="color: #000080">versión en inglés</span></u></a>, generada mediante <a href="https://www.deepl.com/"><u><span style="color: #000080">una herramienta automática</span></u></a>. Es posible que algunas expresiones o términos técnicos no reflejen plenamente el significado original.</p>
-<p><a href="https://stahe.github.io/es-word-odt-vers-html-janv-2026/"><u><span style="color: #0563c1">Este sitio web se creó utilizando el conversor [Word u ODT -&gt; HTML] desarrollado por los sistemas de IA Gemini 3 y ChatGPT 5.2 en enero de 2026</span></u></a>.</p>
-<hr style="border:0; border-top:0.51pt solid #000000; margin:0.75em 0;" data-odt-border="bottom" />
+<p><strong>Resultados</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#__codelineno-0-40">40</a></span>
+<span class="normal"><a href="#__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span>
+<span class="normal"><a href="#__codelineno-0-45">45</a></span>
+<span class="normal"><a href="#__codelineno-0-46">46</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>SimpleXMLElement Object
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>(
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>    [enseignant] =&gt; SimpleXMLElement Object
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>        (
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>            [personne] =&gt; SimpleXMLElement Object
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>                (
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>                    [@attributes] =&gt; Array
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>                        (
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>                            [sexe] =&gt; M
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>                        )
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>                    [nom] =&gt; dupont
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>                    [prenom] =&gt; jean
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>                    [age] =&gt; 28
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>                )
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>            [section] =&gt; 27
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>        )
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>    [etudiant] =&gt; SimpleXMLElement Object
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>        (
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a>            [personne] =&gt; SimpleXMLElement Object
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a>                (
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>                    [@attributes] =&gt; Array
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>                        (
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>                            [sexe] =&gt; F
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>                        )
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>                    [nom] =&gt; martin
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>                    [prenom] =&gt; charline
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a>                    [age] =&gt; 22
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>                )
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>            [formation] =&gt; dess IAIE
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>        )
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>)
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>SimpleXMLElement Object
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>(
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>    [0] =&gt; M
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a>)
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>nom=dupont
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>sexe=M
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a>formation=dess IAIE
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>isset=1
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a>isset=
+</code></pre></div></td></tr></table></div>
+<ul>
+  <li>líneas 1-37: el documento XML en forma de un objeto [simpleXML].
+  </li>
+</ul>
 
-<p>Mediante el conversor Gemini/ChatGPT, se han generado varios sitios web a partir de documentos ODT de LibreOffice y documentos de Word:</p>
-<p><u><strong>Java</strong></u></p>
-<ul>
-<li>[<a href="https://stahe.github.io/es-java-sept-1998/"><u><span style="color: #000080">Introducción al lenguaje Java (1998)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-servlets-java-juin-2002/"><u><span style="color: #000080">Introducción a la programación web en Java con servlets y páginas JSP (2002)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-struts1x-dec-2003/"><u><span style="color: #000080">Introducción a Struts 1.x a través de ejemplos (2003)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-java-web-mvc-mai-2006/"><u><span style="color: #000080">Fundamentos del desarrollo web MVC en Java a través de ejemplos (2006)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-jpa-juin-2007/"><u><span style="color: #000080">Persistencia en Java 5 a través de la práctica (2007)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-webservice-netbeans-glassfish-fev-2009/"><u><span style="color: #000080">Creación de un servicio web Java EE con el IDE NetBeans 6.5 y el servidor Java EE GlassFish (2009)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-struts2-janv-2012/"><u><span style="color: #000080">Introducción a Struts 2 a través de ejemplos (2012)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-jsf2-pf-pfm-juin-2012/"><u><span style="color: #000080">Introducción a Java Server Faces, PrimeFaces y PrimeFaces Mobile con ejemplos (2012)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-javaee-juin-2012/"><u><span style="color: #000080">Introducción a Java EE con el IDE NetBeans y el servidor de aplicaciones GlassFish (2012)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-spring-angular1.x-juillet-2014/"><u><span style="color: #000080">Un ejemplo de cliente/servidor: AngularJS 1.x / Spring 4 (2014)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-java-spring-dec-2015/"><u><span style="color: #000080">Introducción al lenguaje Java y al ecosistema Spring a través de un caso práctico (2015)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-springmvc-thymeleaf-janv-2015/"><u><span style="color: #000080">Introducción a Spring MVC y Thymeleaf a través de ejemplos (2015)</span></u></a>]</li>
-<li>[<a href="https://stahe.github.io/es-spring-database-juin-2015/"><u><span style="color: #000080">Trabajar con una base de datos relacional utilizando el ecosistema Spring (2015)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-rxjava-mai-2016/"><u><span style="color: #000080">Introducción a RxJava. Aplicación a entornos Swing y Android (2016)</span></u></a>];</li>
-</ul>
-<p><u><strong>Android</strong></u></p>
-<ul>
-<li>[<a href="https://stahe.github.io/es-android-aout-2016/"><u><span style="color: #000080">Introducción a la programación para tabletas Android con Android Studio (2016)</span></u></a>];</li>
-</ul>
-<p><u>.</u><u><strong>NET</strong></u></p>
-<ul>
-<li>[<a href="https://stahe.github.io/es-vbnet-mars-2004/"><u><span style="color: #000080">Introducción a VB.NET a través de ejemplos (2004)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-aspnet1.1-avril-2004/"><u><span style="color: #000080">Desarrollo web con ASP.NET 1.1 (2004)</span></u></a>];</li>
-<li>[<u><span style="color: #000080"><a href="https://stahe.github.io/es-springioc-dotnet-avril-2005/">Spring IoC para .NET (2005)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-web3tier-dotnet-avril-2005/"><u><span style="color: #000080">Creación de una aplicación web de tres capas con Spring.NET y VB.NET (2005)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-csharp-mai-2008/"><u><span style="color: #000080">Aprender C# versión 3.0 con .NET Framework 3.5 (2008)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-pam-aspnet-juin-2010/"><u><span style="color: #000080">Creación de una aplicación web de tres capas con ASP.NET 2.0, C#, Spring.NET y NHibernate (2010)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-nhibernate-dotnet-dec-2011/"><u><span style="color: #000080">Introducción al marco NHibernate para la plataforma .NET (2011)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-ef5cf-oct-2012/"><u><span style="color: #000080">Introducción a Entity Framework 5 Code First a través de ejemplos (2012)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-aspnetmvc-nov-2013/"><u><span style="color: #000080">Introducción al marco ASP.NET MVC a través de ejemplos (2013)</span></u></a>];</li>
-</ul>
-<p><u><strong>JavaScript</strong></u></p>
-<ul>
-<li>[<a href="https://stahe.github.io/es-spring-angular1.x-juillet-2014/"><u><span style="color: #000080">Un ejemplo de cliente/servidor: AngularJS 1.x / Spring 4 (2014)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-ecmascript6-oct-2019/"><u><span style="color: #000080">Introducción al lenguaje ECMAScript 6 a través de ejemplos (2019)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-vuejs-oct-2019/"><u><span style="color: #000080">Introducción al marco VUE.JS a través de ejemplos (2019)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-nuxtjs-dec-2019/"><u><span style="color: #000080">Introducción al marco NUXT.JS a través de ejemplos (2019)</span></u></a>];</li>
-</ul>
-<p><u><strong>PHP</strong></u></p>
-<ul>
-<li>[<a href="https://stahe.github.io/es-php4mvc-janvier-2004/"><u><span style="color: #000080">Metodología de desarrollo MVC para una aplicación web en PHP4 (2004)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-php5-juillet-2011/"><u><span style="color: #000080">Introducción al lenguaje PHP5 a través de ejemplos (2011)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-php7-juillet-2019/"><u><span style="color: #000080">Introducción al lenguaje PHP7 a través de ejemplos (2019)</span></u></a>];</li>
-</ul>
-<p><u><strong>Python</strong></u></p>
-<ul>
-<li>[<a href="https://stahe.github.io/es-python2.7-mars-2012/"><u><span style="color: #000080">Introducción a Python 2.7 a través de ejemplos (2012)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-python-flask-sept-2020/"><u><span style="color: #000080">Introducción al lenguaje Python y al marco web Flask a través de ejemplos (2020)</span></u></a>];</li>
-<li>[<a href="https://stahe.github.io/es-python-ia-sept-2025/"><u><span style="color: #000080">Generar un script de Python utilizando herramientas de IA (2025)</span></u></a>];</li>
-</ul>
-<p><u><strong>VBScript</strong></u></p>
-<ul>
-<li>[<a href="https://stahe.github.io/es-vbscript-janv-2002/"><u><span style="color: #000080">Introducción a VBScript (2002)</span></u></a>];</li>
-</ul>
-<p><u><strong>SQL</strong></u></p>
-<ul>
-<li>[<a href="https://stahe.github.io/es-sql-firebird-janv-2006/"><u><span style="color: #000080">Introducción al lenguaje SQL con el SGBD Firebird (2006)</span></u></a>];</li>
-</ul>
-<p>Todos estos son cursos antiguos que constan de varios cientos de páginas. El tamaño del documento ODT o DOCX no importa para el conversor Gemini/ChatGPT. Lo que le importa son las estructuras que se encuentran en su interior (véase el capítulo:  <a href="https://stahe.github.io/es-word-odt-vers-html-janv-2026/ejemplos-de-este-documento----.html"><u><span style="color: #000080"><u><span style="color: #0563c1">Ejemplos de este documento</span></u></span></u></a>).</p>
+<p>El script anterior no nos muestra todas las posibilidades del módulo [simpleXML], pero es suficiente para escribir una versión final del ejercicio IMPOTS.</p>
 
 
 
