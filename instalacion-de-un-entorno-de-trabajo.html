@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Una introducción a PHP5 a través de ejemplos">
+        <meta name="description" content="Metodología de desarrollo MVC para una aplicación web en PHP4">
       
       
         <meta name="author" content="Serge Tahé">
       
       
-        <link rel="canonical" href="https://stahe.github.io/es-php5-juillet-2011/configuracion-de-un-entorno-de-desarrollo.html">
+        <link rel="canonical" href="https://stahe.github.io/es-php4mvc-janvier-2004/instalacion-de-un-entorno-de-trabajo.html">
       
       
         <link rel="prev" href="prologo.html">
       
       
-        <link rel="next" href="conceptos-basicos-de-php.html">
+        <link rel="next" href="los-fundamentos-de-php.html">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>2. Configuración de un entorno de desarrollo - Una introducción a PHP5 a través de ejemplos</title>
+        <title>2. Instalación de un entorno de trabajo - Metodología de desarrollo MVC para una aplicación web en PHP4</title>
       
     
     
@@ -57,6 +57,8 @@
     
       <link rel="stylesheet" href="stylesheets/focus.css">
     
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -65,7 +67,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    var siteName = "Una introducción a PHP5 a través de ejemplos";
+    var siteName = "Metodología de desarrollo MVC para una aplicación web en PHP4";
     gtag('config', 'G-EBZC3JVJNR', {
         'page_title': siteName
     });
@@ -92,7 +94,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#2-configuracion-de-un-entorno-de-desarrollo" class="md-skip">
+        <a href="#2-instalacion-de-un-entorno-de-trabajo" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +110,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="index.html" title="Una introducción a PHP5 a través de ejemplos" class="md-header__button md-logo" aria-label="Una introducción a PHP5 a través de ejemplos" data-md-component="logo">
+    <a href="index.html" title="Metodología de desarrollo MVC para una aplicación web en PHP4" class="md-header__button md-logo" aria-label="Metodología de desarrollo MVC para una aplicación web en PHP4" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -122,13 +124,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Una introducción a PHP5 a través de ejemplos
+            Metodología de desarrollo MVC para una aplicación web en PHP4
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2. Configuración de un entorno de desarrollo
+              2. Instalación de un entorno de trabajo
             
           </span>
         </div>
@@ -141,9 +143,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar al modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Cambiar al modo oscuro" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
       </label>
     
@@ -208,7 +210,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://stahe.github.io/es-php5-juillet-2011" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://stahe.github.io/es-php4mvc-janvier-2004" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -246,17 +248,17 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="index.html" title="Una introducción a PHP5 a través de ejemplos" class="md-nav__button md-logo" aria-label="Una introducción a PHP5 a través de ejemplos" data-md-component="logo">
+    <a href="index.html" title="Metodología de desarrollo MVC para una aplicación web en PHP4" class="md-nav__button md-logo" aria-label="Metodología de desarrollo MVC para una aplicación web en PHP4" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Una introducción a PHP5 a través de ejemplos
+    Metodología de desarrollo MVC para una aplicación web en PHP4
   </label>
   
     <div class="md-nav__source">
-      <a href="https://stahe.github.io/es-php5-juillet-2011" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://stahe.github.io/es-php4mvc-janvier-2004" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -346,7 +348,7 @@
   <span class="md-ellipsis">
     
   
-    2. Configuración de un entorno de desarrollo
+    2. Instalación de un entorno de trabajo
   
 
     
@@ -357,14 +359,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="configuracion-de-un-entorno-de-desarrollo.html" class="md-nav__link md-nav__link--active">
+      <a href="instalacion-de-un-entorno-de-trabajo.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    2. Configuración de un entorno de desarrollo
+    2. Instalación de un entorno de trabajo
   
 
     
@@ -401,10 +403,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#202-instalacion-del-ide-netbeans-70" class="md-nav__link">
+  <a href="#202-instalacion-de-ide-y-netbeans-70" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.0.2. Instalación del IDE NetBeans 7.0
+        2.0.2. Instalación de IDE y Netbeans 7.0
       
     </span>
   </a>
@@ -426,14 +428,14 @@
   
   
     <li class="md-nav__item">
-      <a href="conceptos-basicos-de-php.html" class="md-nav__link">
+      <a href="los-fundamentos-de-php.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    3. Conceptos básicos de PHP
+    3. Los fundamentos de PHP
   
 
     
@@ -453,14 +455,14 @@
   
   
     <li class="md-nav__item">
-      <a href="ejercicio-practico-calculo-de-impuestos.html" class="md-nav__link">
+      <a href="ejercicio-de-aplicacion---impots.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    4. Ejercicio práctico: Cálculo de impuestos
+    4. Ejercicio de aplicación - IMPOTS
   
 
     
@@ -480,14 +482,14 @@
   
   
     <li class="md-nav__item">
-      <a href="objetos.html" class="md-nav__link">
+      <a href="los-objetos.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    5. Objetos
+    5. Los objetos
   
 
     
@@ -507,14 +509,14 @@
   
   
     <li class="md-nav__item">
-      <a href="ejercicio-de-aplicacion-calculo-de-impuestos-con-objetos-impots03.html" class="md-nav__link">
+      <a href="ejercicio-practico-impots-con-objetos-impots03.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    6. Ejercicio de aplicación: Cálculo de impuestos con objetos (impots_03)
+    6. Ejercicio práctico: IMPOTS con objetos (impots_03)
   
 
     
@@ -534,14 +536,14 @@
   
   
     <li class="md-nav__item">
-      <a href="uso-del-sgbd-mysql.html" class="md-nav__link">
+      <a href="uso-de-sgbd-mysql.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    7. Uso del SGBD MySQL
+    7. Uso de SGBD MySql
   
 
     
@@ -561,14 +563,14 @@
   
   
     <li class="md-nav__item">
-      <a href="ejercicio-de-calculo-de-impuestos-con-mysql.html" class="md-nav__link">
+      <a href="ejercicio-impots-con-mysql.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    8. Ejercicio de cálculo de impuestos con MySQL
+    8. Ejercicio IMPOTS con MySQL
   
 
     
@@ -588,14 +590,14 @@
   
   
     <li class="md-nav__item">
-      <a href="funciones-de-red-de-php.html" class="md-nav__link">
+      <a href="las-funciones-de-red-de-php.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    9. Funciones de red de PHP
+    9. Las funciones de red de PHP
   
 
     
@@ -615,14 +617,14 @@
   
   
     <li class="md-nav__item">
-      <a href="servidores-php.html" class="md-nav__link">
+      <a href="servidores-en-php.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    10. Servidores PHP
+    10. Servidores en PHP
   
 
     
@@ -642,14 +644,14 @@
   
   
     <li class="md-nav__item">
-      <a href="calculo-de-impuestos-ejercicio-con-un-servicio-web-y-una-arquitectura-de-tres-capas.html" class="md-nav__link">
+      <a href="ejercicio-impots-con-un-servicio-web-y-una-arquitectura-de-tres-capas.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    11. Cálculo de impuestos: Ejercicio con un servicio web y una arquitectura de tres capas
+    11. Ejercicio IMPOTS con un servicio WEB y una arquitectura de tres capas
   
 
     
@@ -696,14 +698,14 @@
   
   
     <li class="md-nav__item">
-      <a href="calculo-de-impuestos-ejercicio-con-xml.html" class="md-nav__link">
+      <a href="ejercicio-impots-con-xml.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    13. Cálculo de impuestos: Ejercicio con XML
+    13. Ejercicio IMPOTS con XML
   
 
     
@@ -733,71 +735,104 @@
 
 
 
-<h1 id="2-configuracion-de-un-entorno-de-desarrollo">2. <span style="color: #365f91">Configuración de un entorno de desarrollo</span></h1>
-<p>Los scripts se escribieron y probaron en el siguiente entorno:</p>
+<h1 id="2-instalacion-de-un-entorno-de-trabajo">2. <span style="color: #365f91">Instalación de un entorno de trabajo</span></h1>
+<p>Los scripts se han escrito y probado en el siguiente entorno:</p>
 <ul>
-<li>un entorno con servidor web Apache / SGBD MySQL / PHP 5.3 denominado <strong>WampServer</strong>.</li>
-<li>el IDE de desarrollo <strong>NetBeans 7.0</strong></li>
+  <li>un entorno de servidor web Apache / SGBD MySQL / PHP 5.3 denominado <b>WampServer</b>.
+  </li>
+  <li>el entorno de desarrollo IDE <b>Netbeans 7.0</b>
+  </li>
 </ul>
-<h3 id="201-instalacion-de-wampserver">2.0.1. <span style="color: #4f81bd"><strong>Instalación de WampServ</strong><strong>er</strong></span></h3>
-<p>WampServer es un paquete que combina varios componentes de software:</p>
+
+<p><span id="wampserverinstall" name="wampserverinstall" class="odt-bookmark-anchor"></span></p>
+<h3 id="201-instalacion-de-wampserver">2.0.1. <span style="color: #4f81bd"><strong>Instalación de</strong> <strong>WampServer</strong></span></h3>
+<p>WampServer es un paquete que reúne varios programas:</p>
 <ul>
-<li>un servidor web Apache. Lo utilizaremos para escribir scripts web en PHP</li>
-<li>el sistema de gestión de bases de datos MySQL</li>
-<li>el lenguaje de programación PHP</li>
-<li>una herramienta de administración de bases de datos MySQL escrita en PHP: phpMyAdmin</li>
+  <li>un servidor web Apache. Lo utilizaremos para escribir scripts web en PHP
+  </li>
+  <li>el SGBD MySQL
+  </li>
+  <li>el lenguaje de script PHP
+  </li>
+  <li>una herramienta de administración de SGBD MySQL escrita en PHP: phpMyAdmin
+  </li>
 </ul>
-<p>Wamp Server se puede descargar (a fecha de julio de 2011) en la siguiente dirección:</p>
+
+<p>Wamp Server se puede descargar (julio de 2011) en la siguiente dirección:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>http://www.wampserver.com/download.php
 </code></pre></div>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000005E7000004BCD1D8E5AD.png" width="680" height="546" style="display:inline-block; margin:4px;width:17.997cm;height:14.436cm;" class="odt-zoomable" data-zoom-src="images/10000000000005E7000004BCD1D8E5AD.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005E7000004BCD1D8E5AD.png" width="680" height="546" style="display:inline-block; margin:4px;width:17.997cm;height:14.434cm;" class="odt-zoomable" data-zoom-src="images/10000000000005E7000004BCD1D8E5AD.png" /></td></tr></table>
 
 <ul>
-<li>En [1], descargue la versión adecuada de WampServer</li>
-<li>La instalación crea la estructura de directorios que se muestra en [2] y [3]</li>
-<li>En [4] y [5], la carpeta de instalación de PHP</li>
+  <li>en [1], se descarga el archivo version de WampServer que sea adecuado
+  </li>
+  <li>la instalación da lugar a la estructura de directorios [2] y [3]
+  </li>
+  <li>en [4] y [5], la carpeta de instalación de PHP
+  </li>
 </ul>
-<h3 id="202-instalacion-del-ide-netbeans-70">2.0.2. <span style="color: #4f81bd">Instalación del IDE NetBeans 7.0</span></h3>
-<p>El IDE NetBeans 7.0 se puede descargar desde la siguiente dirección (julio de 2011):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://netbeans.org/downloads/&quot;</span><span class="p">&gt;</span>http://netbeans.org/downloads/<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+
+<h3 id="202-instalacion-de-ide-y-netbeans-70">2.0.2. <span style="color: #4f81bd">Instalación de IDE y Netbeans 7.0</span></h3>
+<p>El IDE Netbeans 7.0 se puede descargar en la siguiente dirección (julio de 2011):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>http://netbeans.org/downloads/
 </code></pre></div>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/100000000000078300000466DAD21E39.png" width="680" height="398" style="display:inline-block; margin:4px;width:17.997cm;height:10.537cm;" class="odt-zoomable" data-zoom-src="images/100000000000078300000466DAD21E39.png" /></td></tr></table>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000078300000466DAD21E39.png" width="680" height="398" style="display:inline-block; margin:4px;width:17.997cm;height:10.537cm;" class="odt-zoomable" data-zoom-src="images/100000000000078300000466DAD21E39.png" /></td></tr></table>
 
-<p>Puedes descargar la versión completa [1] o la versión solo para PHP [2], que es más ligera. Una vez instalado y ejecutado NetBeans, puedes crear tu primer proyecto PHP.</p>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000558000001823B5D8487.png" width="680" height="192" style="display:inline-block; margin:4px;width:17.997cm;height:5.078cm;" class="odt-zoomable" data-zoom-src="images/1000000000000558000001823B5D8487.png" /></td></tr></table>
-
-<ul>
-<li>En [1], selecciona la opción Archivo / Nuevo proyecto</li>
-<li>En [2], selecciona la categoría [PHP]</li>
-<li>En [3], seleccione el tipo de proyecto [Aplicación PHP]</li>
-</ul>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000007C4000001AF0F3A5E70.png" width="680" height="147" style="display:inline-block; margin:4px;width:17.997cm;height:3.902cm;" class="odt-zoomable" data-zoom-src="images/10000000000007C4000001AF0F3A5E70.png" /></td></tr></table>
+<p>Se puede descargar bien la versión completa version [1], bien la versión limitada version PHP [2], que es más ligera. Una vez instalado y ejecutado Netbeans, se puede crear un primer proyecto PHP.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000558000001823B5D8487.png" width="680" height="192" style="display:inline-block; margin:4px;width:17.997cm;height:5.076cm;" class="odt-zoomable" data-zoom-src="images/1000000000000558000001823B5D8487.png" /></td></tr></table>
 
 <ul>
-<li>En [4], asigne un nombre al proyecto</li>
-<li>En [5], elige una carpeta para el proyecto</li>
-<li>En [6], selecciona la versión de PHP descargada</li>
-<li>En [7], selecciona la codificación UTF-8 para los archivos PHP</li>
-<li>En [8], seleccione el modo [Script] para ejecutar scripts PHP en modo de línea de comandos. Seleccione [Servidor web local] para ejecutar un script PHP en un entorno web.</li>
-<li>En [9,10], especifique el directorio de instalación para el intérprete de PHP del paquete WampServer.</li>
-<li>Seleccione [Finalizar] para completar el asistente de creación del proyecto PHP.</li>
+  <li>En [1], seleccione Archivo / Nuevo proyecto
+  </li>
+  <li>en [2], seleccione la categoría [PHP]
+  </li>
+  <li>en [3], seleccione el tipo de proyecto [PHP Application]
+  </li>
 </ul>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/10000000000007190000020A28C0B975.png" width="680" height="195" style="display:inline-block; margin:4px;width:17.997cm;height:5.17cm;" class="odt-zoomable" data-zoom-src="images/10000000000007190000020A28C0B975.png" /></td></tr></table>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000007C4000001AF0F3A5E70.png" width="680" height="147" style="display:inline-block; margin:4px;width:17.997cm;height:3.902cm;" class="odt-zoomable" data-zoom-src="images/10000000000007C4000001AF0F3A5E70.png" /></td></tr></table>
 
 <ul>
-<li>En [11], el proyecto se crea con un script [index.php]</li>
-<li>En [12], escribe un script PHP mínimo</li>
-<li>En [13], ejecute [index.php]</li>
+  <li>en [4], asigne un nombre al proyecto
+  </li>
+  <li>en [5], elija una carpeta para el proyecto
+  </li>
+  <li>en [6], seleccione la version de PHP descargada
+  </li>
+  <li>en [7], elegir la codificación UTF-8 para los archivos PHP
+  </li>
+  <li>en [8], elija el modo [Script] para ejecutar los scripts PHP en modo de línea de comandos. Seleccione [Local Web Server] para ejecutar un script PHP en un entorno web.
+  </li>
+  <li>En [9,10], indique el directorio de instalación del intérprete PHP del paquete WampServer.
+  </li>
+  <li>Seleccione [Finish] para finalizar el asistente de creación del proyecto PHP.
+  </li>
 </ul>
-<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top;"><img src="images/1000000000000767000001475B8B7C19.png" width="680" height="117" style="display:inline-block; margin:4px;width:17.997cm;height:3.106cm;" class="odt-zoomable" data-zoom-src="images/1000000000000767000001475B8B7C19.png" /></td></tr></table>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000007190000020A28C0B975.png" width="680" height="195" style="display:inline-block; margin:4px;width:17.997cm;height:5.17cm;" class="odt-zoomable" data-zoom-src="images/10000000000007190000020A28C0B975.png" /></td></tr></table>
 
 <ul>
-<li>En [14], los resultados aparecen en la ventana [salida] de NetBeans.</li>
-<li>En [15], se crea un nuevo script</li>
-<li>En [16], el nuevo script</li>
+  <li>En [11], el proyecto se crea con un script [index.php]
+  </li>
+  <li>en [12], se escribe un script PHP mínimo
+  </li>
+  <li>en [13], se ejecuta [index.php]
+  </li>
 </ul>
-<p>El lector puede crear todos los scripts que siguen en el mismo proyecto PHP.</p>
-<p>Ahora que el entorno de desarrollo está configurado, podemos repasar los conceptos básicos de PHP.</p>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000767000001475B8B7C19.png" width="680" height="117" style="display:inline-block; margin:4px;width:17.997cm;height:3.104cm;" class="odt-zoomable" data-zoom-src="images/1000000000000767000001475B8B7C19.png" /></td></tr></table>
+
+<ul>
+  <li>en [14], los resultados en la ventana [output] de Netbeans.
+  </li>
+  <li>en [15], se crea un nuevo script
+  </li>
+  <li>en [16], el nuevo script
+  </li>
+</ul>
+
+<p>El lector podrá crear todos los scripts que siguen en el mismo proyecto PHP.</p>
+<p>Ahora que se ha instalado el entorno de trabajo, podemos abordar los fundamentos de PHP.</p>
 
 
 
